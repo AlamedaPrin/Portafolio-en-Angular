@@ -1,0 +1,24 @@
+{
+    "name": "Franco Menna",
+    "PerfilImage": "",
+    "position": "Full Stack Developer Jr",
+    "ubicacion": "Buenos Aires (Argentina)",   
+    "about": "Estudiante Argentino de desarrollo web. Full Stack Developer Jr. Egresado de Argentina Programa",
+    "experiencia": "Primeros pasos desarrollando web. Frontend y Backend.",
+    "educacion": [{
+        "school": "Mumuki",
+        "career": "#SéProgramar",
+        "start": "ago 2021",
+        "end": "nov 2021"
+    },   
+    {
+       "school": "INTI",
+       "career": "#YoProgramo",
+       "start": "nov 2021",
+       "end": "may 2022"
+    }
+    ]  
+
+
+}
+

@@ -1,0 +1,106 @@
+<header class="cabecera">
+  <!-- <nav class="navbar"> 
+         <div class="brand">
+               
+           <img class="LogoAP rounded float-start img-fluid" src="img/Logo AP.png" alt="Argentina Programa Logo">  
+                   
+          </div>
+        <ul class="menu"> 
+            <li ><a class="active" href="#">Github</a></li>                
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Instagram</a></li>            
+         </ul>    
+    </nav>   -->
+
+  <div class="toolbar" role="banner">
+    <img class="logo" width="100" alt="LogoAP" src="../assets/img/LogoAP.png" />
+
+    <p class="nombre">{{miPorfolio.name}}</p>
+    <div class="spacer"></div>
+    <a href="https://twitter.com/FrancoSimn3" title="Twitter">
+      <svg id="twitter-logo" height="40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+        <rect width="400" height="400" fill="none" />
+        <path
+          d="M153.62,301.59c94.34,0,145.94-78.16,145.94-145.94,0-2.22,0-4.43-.15-6.63A104.36,104.36,0,0,0,325,122.47a102.38,102.38,0,0,1-29.46,8.07,51.47,51.47,0,0,0,22.55-28.37,102.79,102.79,0,0,1-32.57,12.45,51.34,51.34,0,0,0-87.41,46.78A145.62,145.62,0,0,1,92.4,107.81a51.33,51.33,0,0,0,15.88,68.47A50.91,50.91,0,0,1,85,169.86c0,.21,0,.43,0,.65a51.31,51.31,0,0,0,41.15,50.28,51.21,51.21,0,0,1-23.16.88,51.35,51.35,0,0,0,47.92,35.62,102.92,102.92,0,0,1-63.7,22A104.41,104.41,0,0,1,75,278.55a145.21,145.21,0,0,0,78.62,23"
+          fill="#fff" />
+      </svg>
+    </a>
+    <a href="https://www.youtube.com/channel/UCocXWI5TuotsVr3NT0muODA" title="YouTube">
+      <svg id="youtube-logo" height="40" width="40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff">
+        <path d="M0 0h24v24H0V0z" fill="none" />
+        <path
+          d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3-5.2 3z" />
+      </svg>
+    </a>
+
+  </div>
+
+
+  <div class="divBan">
+    <img class="banner" src="../assets/img/banner 2.jpg" alt="banner">
+    <!-- aca iria property binding (cuando tengas imagenes subidas en algun servidor)-->
+    <img class="img-fluid rounded-circle" src="../assets/img/Foto Perfil.png" alt="Foto Perfil">
+  </div>
+
+  <div class="info">
+    <h3 id="nom">{{miPorfolio.name}}</h3>
+    <button *ngIf="usuarioAutenticado" type="button" class="fas fa-user-edit fa-lg btn-primary" id="icon"
+      data-bs-toggle="modal" data-bs-target="#modalEncabezado"></button>
+  </div>
+  <div class="puesto">
+    <h5 class="stack"> {{miPorfolio.position}} </h5>
+    <h5 class="bsas"> {{miPorfolio.ubicacion}} </h5>
+  </div>
+
+
+</header>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalEncabezado" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Encabezado</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form">
+          <div class="mb-3">
+            <label for="fullName" class="form-label">Nombre y Apellido</label>
+            <input type="text" class="form-control" id="fullName" formControlName="fullName">
+            <!-- le cambie el nombre al id. Tanto de la etiqueta 'input' como en 'label', para no tener problemas con otros formularios -->
+            <div *ngIf="fullName?.invalid && fullName?.touched">
+              <div *ngIf="fullName?.errors?.['required']" class="text-danger">
+                Nombre y apellido requeridos.
+              </div>
+              <div *ngIf="fullName?.errors?.['minlength']" class="text-danger">
+                Nombre y apellido deben tener más de 5 caracteres.
+              </div>         
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="position" class="form-label">Posición</label>
+            <input type="text" class="form-control" id="position" formControlName="position">
+            <!-- placeholder="Posición" -->
+          </div>
+          <div class="mb-3">
+            <label for="ubication" class="form-label">Lugar de Residencia</label>
+            <input type="text" class="form-control" id="ubication" formControlName="ubication">
+          </div>
+          <div class="mb-3">
+            <label for="url" class="form-label">URL de la imágen</label>
+            <input type="text" class="form-control" id="url" formControlName="url">
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cerrarModalEncabezado" class="btn btn-secondary"
+          data-bs-dismiss="modal">Salir</button>
+        <button type="button" class="btn btn-primary" (click)="guardarEncabezado()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
