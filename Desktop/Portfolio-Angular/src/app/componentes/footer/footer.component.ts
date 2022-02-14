@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PorfolioService } from 'src/app/servicios/porfolio.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  miPorfolio:any;
 
-  ngOnInit(): void {
+  constructor(private datosProyectos:PorfolioService) { }
+
+  ngOnInit(): void {  
+    this.datosProyectos.obtenerDatosProyectos().subscribe(data => {
+      console.log(data);
+      this.miPorfolio = data;
+    })
+    
+
   }
 
 }

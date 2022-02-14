@@ -12,6 +12,16 @@ export class PorfolioService {
    obtenerDatos():Observable<any>{
      return this.http.get('./assets/data/data.json');    
    }  
+
+   obtenerDatosEducacion():Observable<any>
+   {
+     return this.http.get('./assets/data/educación.json')
+   }
+
+   obtenerDatosProyectos():Observable<any>
+   {
+     return this.http.get('./assets/data/proyectos.json')
+   }
 }
 
  

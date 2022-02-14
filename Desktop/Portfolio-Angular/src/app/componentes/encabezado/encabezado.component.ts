@@ -35,8 +35,7 @@ export class EncabezadoComponent implements OnInit {
   }
 
   guardarEncabezado(){    
-    if(this.form.valid){
-     
+    if(this.form.valid){     
       this.form.reset(); // esto es para resetear el formulario despues de darle a guardar
       document.getElementById("cerrarModalEncabezado")?.click(); // esto es para que despues de darle a guardar se cierre la ventana. Copié la misma funcionalida de bootstrap que tenía el boton "cerrar"
     }
