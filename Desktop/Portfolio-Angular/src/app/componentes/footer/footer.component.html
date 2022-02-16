@@ -4,13 +4,38 @@
       <h3 class="de">Proyectos</h3>
     </div>
 
-       <i class="fas fa-pen" id="aver"></i>               
-       <i class="fas fa-trash-alt" id="aber"></i>
+       <button class="fas fa-pen" id="aver" data-bs-toggle="modal" data-bs-target="#modalProyecto"></button>               
+       <button class="fas fa-trash-alt" id="aber"></button>
     <div>
-      <p id="Lorem"> {{miPorfolio.Proyectos}}</p>
+      <p id="Lorem">{{miPorfolio.Proyectos}}</p>
     </div>
   </footer>  
 
     <div class="pie">
       
     </div>
+
+    <!-- Modal -->
+<div class="modal fade" id="modalProyecto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Información</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="campoProyecto" class="form-label">Proyecto</label>
+            <input type="text" class="form-control" id="campoProyecto" placeholder="Edite aquí el campo Proyecto">            
+          </div>
+         
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

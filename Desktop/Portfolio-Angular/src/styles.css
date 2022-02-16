@@ -341,12 +341,5 @@ display: flex;
     color: black;
 }
 
-/* Estilos Formularios */
 
-.ng-valid:not(form).ng-touched {
-    border-left: 5px solid #42A948; /* green */
-    }
-   .ng-invalid:not(form).ng-touched {
-    border-left: 5px solid #a94442; /* red */
-    }
    

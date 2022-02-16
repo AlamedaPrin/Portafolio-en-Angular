@@ -44,7 +44,9 @@ export class EncabezadoComponent implements OnInit {
     
     this.form.markAllAsTouched();
   }
+  }
 
-
+  salirEncabezado(){
+    this.form.reset();    
   }
 }

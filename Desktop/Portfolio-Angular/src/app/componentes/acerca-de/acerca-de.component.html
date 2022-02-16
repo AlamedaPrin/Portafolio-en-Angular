@@ -6,13 +6,42 @@
         <h2 class="de"> Acerca de </h2> 
         
         </div>
-
-        <i class="fas fa-pen" id="aver"></i>               
-        <i class="fas fa-trash-alt" id="aber"></i>
+            <!-- mi boton de edición -->
+        <button class="fas fa-pen" id="aver" data-bs-toggle="modal" data-bs-target="#modalAcercaDe"></button>            
+        <button class="fas fa-trash-alt" id="aber"></button>
 
         <div>        
            <p id="Lorem" > {{miPorfolio.about}} </p>                
-        </div>
-    
+        </div>    
 
   </section>
+
+<!-- Modal -->
+<div class="modal fade" id="modalAcercaDe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Información</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formAcerca">
+          <div class="mb-3">
+            <label for="campoAcercaDe" class="form-label">Acerca De</label>
+            <input type="text" class="form-control" id="campoAcercaDe" placeholder="Edite aquí el campo 'Acerca De'" formControlName="AcercaDe">
+            <div *ngIf="campoAcercaDe?.invalid && campoAcercaDe?.touched">
+              <div *ngIf="campoAcercaDe?.errors?.['minlength']" class="text-danger">
+                El campo debe contener mínimo 20 caracteres.
+              </div> 
+
+            </div>            
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cerrarModalAcerca" class="btn btn-secondary" data-bs-dismiss="modal" (click)="salirAcercaDe()">Salir</button>
+        <button type="button" class="btn btn-primary" (click)="guardarAcercaDe()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
