@@ -34,7 +34,7 @@
   <div class="info">
     <h3 id="nom">{{miPorfolio.name}}</h3>
     <button *ngIf="usuarioAutenticado" type="button" class="fas fa-user-edit fa-lg btn-primary" id="icon"
-      data-bs-toggle="modal" data-bs-target="#modalEncabezado"></button>
+      data-bs-toggle="modal" data-bs-target="#modalEncabezado" (click)="mostrarDatosEncabezado()"></button>
   </div>
   <div class="puesto">
     <h5 class="stack"> {{miPorfolio.position}} </h5>

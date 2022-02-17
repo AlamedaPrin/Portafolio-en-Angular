@@ -44,7 +44,6 @@ export class AcercaDeComponent implements OnInit {
 }
 
 salirAcercaDe(){ 
-  this.formAcerca.reset(); 
-  
+  this.formAcerca.reset();   
 }
 }

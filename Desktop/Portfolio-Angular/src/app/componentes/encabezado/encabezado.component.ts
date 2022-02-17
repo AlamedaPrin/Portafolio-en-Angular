@@ -7,7 +7,7 @@ import { PorfolioService } from 'src/app/servicios/porfolio.service';
   templateUrl: './encabezado.component.html',
   styleUrls: ['./encabezado.component.css']
 })
-export class EncabezadoComponent implements OnInit {
+export class EncabezadoComponent implements OnInit { 
 
   miPorfolio:any;
   form:FormGroup;
@@ -47,6 +47,21 @@ export class EncabezadoComponent implements OnInit {
   }
 
   salirEncabezado(){
-    this.form.reset();    
+    this.form.reset(); 
   }
+  
+
+  mostrarDatosEncabezado(){
+    this.form.controls["fullName"].setValue(this.miPorfolio.fullName);
+    this.form.controls["ubication"].setValue(this.miPorfolio.ubication);
+    this.form.controls["position"].setValue(this.miPorfolio.position);
+    this.form.controls["url"].setValue(this.miPorfolio.url);
+  }
+  
+
+  
+  
+
+
+
 }
