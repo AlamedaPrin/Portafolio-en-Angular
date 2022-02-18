@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Persona } from 'src/app/Entidades/persona';
 import { PorfolioService } from 'src/app/servicios/porfolio.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class EncabezadoComponent implements OnInit {
       fullName: ['',[Validators.required, Validators.minLength(5)]],
       position: ['',[Validators.required]],
       ubication: ['',[Validators.required]],
-      url: ['https://',[Validators.required]],
+      url: ['https://'],
     })
   }    
   
@@ -35,30 +36,42 @@ export class EncabezadoComponent implements OnInit {
   }
 
   guardarEncabezado(){    
-    if(this.form.valid){     
-      this.form.reset(); // esto es para resetear el formulario despues de darle a guardar
+    if(this.form.valid){  
+
+      let fullName = this.form.controls["fullName"].value;
+      let ubication = this.form.controls["ubication"].value;
+      let position = this.form.controls["position"].value;
+      let url = this.form.controls["url"].value;
+
+      let personaEditar = new Persona(fullName, position, ubication, url); 
+
+      this.datosPorfolio.editarDatosPersona(personaEditar).subscribe(data => {
+        this.miPorfolio=personaEditar;
+        this.form.reset(); // esto es para resetear el formulario despues de darle a guardar
       document.getElementById("cerrarModalEncabezado")?.click(); // esto es para que despues de darle a guardar se cierre la ventana. Copié la misma funcionalida de bootstrap que tenía el boton "cerrar"
+      }, 
+      error => {
+        alert("No se pudo actualizar el registro. Por favor, intente nuevamente o contacte al administrador")
+      });   
+
     }
     else 
   {
     
     this.form.markAllAsTouched();
   }
-  }
-
-  salirEncabezado(){
-    this.form.reset(); 
-  }
-  
+  }  
 
   mostrarDatosEncabezado(){
+    
+    this.form.controls["position"].setValue(this.miPorfolio.position);
     this.form.controls["fullName"].setValue(this.miPorfolio.fullName);
     this.form.controls["ubication"].setValue(this.miPorfolio.ubication);
-    this.form.controls["position"].setValue(this.miPorfolio.position);
     this.form.controls["url"].setValue(this.miPorfolio.url);
+       
   }
   
-
+  
   
   
 

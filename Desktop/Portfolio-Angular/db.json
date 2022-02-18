@@ -4,6 +4,100 @@
       "id": 1,
       "title": "json-server",
       "author": "typicode"
+    },
+    {
+      "fullName": "Franco Simon Menna",
+      "position": "Full Stack Developer Chupapija jr",
+      "ubication": "Buenos Aires (Argentina)",
+      "image": "https://twitter.com/i/status/1418721837320744964",
+      "id": 2
+    },
+    {
+      "fullName": "Franco Simon Menna",
+      "position": "Full Stack Developer Jr",
+      "ubication": "Buenos Aires (Argentina)",
+      "image": "Buenos Aires (Argentina)",
+      "id": 3
+    },
+    {
+      "fullName": "Franco Simon Menna",
+      "position": "Full Stack Developer Jr",
+      "ubication": "Buenos Aires (Argentina)",
+      "image": "https://twitter.com/i/status/1418721837320744964",
+      "id": 4
+    },
+    {
+      "fullName": "Franco Menna",
+      "position": "Full Stack Developer Jr",
+      "ubication": "Catamarca",
+      "image": "hht",
+      "id": 5
+    },
+    {
+      "fullName": "Franco Menna",
+      "position": "Full Stack Developer Jr holabuenas",
+      "ubication": "Buenos Aires (Argentina)",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1280px-Image_created_with_a_mobile_phone.png",
+      "id": 6
+    },
+    {
+      "fullName": "Franco Menna ad",
+      "position": "Full Stack Developer Jr",
+      "ubication": "Buenos Aires (Argentina)",
+      "image": "https://twitter.com/i/status/1418721837320744964",
+      "id": 7
+    },
+    {
+      "fullName": "Franco Menna",
+      "position": "Full Stack Developer Jr dadad",
+      "ubication": "Buenos Aires (Argentina)",
+      "image": "https://twitter.com/i/status/1418721837320744964",
+      "id": 8
+    },
+    {
+      "fullName": "Franco Menna",
+      "position": "Full Stack Developer Jr",
+      "ubication": "Buenos Aires (brasil)",
+      "image": "https://google.com.ar",
+      "id": 9
+    },
+    {
+      "fullName": "Franco Simon Menna",
+      "position": "Full Stack Developer Jr lagarto",
+      "ubication": "Buenos Aires (Argentina)",
+      "image": "",
+      "id": 10
+    },
+    {
+      "fullName": "Franco Simon Menna",
+      "position": "Full Stack Developer Jr lagarto",
+      "ubication": "Buenos Aires (Brasil)",
+      "id": 11
+    },
+    {
+      "fullName": "Esteban Kito",
+      "position": "Chupaverga profesional",
+      "ubication": "marvel",
+      "id": 12
+    },
+    {
+      "fullName": "Franquito",
+      "position": "Tranza",
+      "ubication": "kATAMARLA",
+      "id": 13
+    },
+    {
+      "fullName": "Franco Simón Menna",
+      "position": "Full Stack Developer Jr",
+      "ubication": "Buenos Aires (Argentina)",
+      "image": "",
+      "id": 14
+    },
+    {
+      "fullName": "Franco Simón Menna",
+      "position": "Frontend Developer",
+      "ubication": "Mar del Plata (Argentina)",
+      "id": 15
     }
   ],
   "comments": [
