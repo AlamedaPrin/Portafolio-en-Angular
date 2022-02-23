@@ -9,7 +9,7 @@ import { PorfolioService } from 'src/app/servicios/porfolio.service';
 })
 export class AcercaDeComponent implements OnInit {
 
-  miPorfolio:any;
+  miPorfolioAcerca:any;
   formAcerca:FormGroup;
 
   constructor(private datosPorfolio:PorfolioService, private acercaFormBuilder:FormBuilder) {
@@ -25,7 +25,7 @@ export class AcercaDeComponent implements OnInit {
   ngOnInit(): void { 
     this.datosPorfolio.obtenerDatos().subscribe(data => {
     console.log(data);
-    this.miPorfolio=data;
+    this.miPorfolioAcerca=data;
   });
   }
 

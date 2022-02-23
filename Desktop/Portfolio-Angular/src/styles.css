@@ -4,7 +4,7 @@
 }
 
 .spacer {
-    flex: 1;    
+    flex: 1;        
   }
   
   .toolbar {
@@ -21,6 +21,7 @@
     border-bottom: 2px solid #fff;
   }
 
+
   .logo {
      margin-left: 0.4cm;
      margin-bottom: 0.2cm;
@@ -29,9 +30,16 @@
   .nombre {
       padding: 15px;
       font-size: 1em;
-      margin-top: 0.8em;
-      
+      margin-top: 0.8em;      
   } 
+
+  #youtu {
+      margin-right: 1em;
+  }
+
+  #login {
+      color: white;
+  }
 
 /* header */
 
@@ -254,7 +262,7 @@ h2 {
 #Lorem {
     color: #1e272e;
     margin-top: 0.3cm;
-    padding: 10px;
+    padding: 3px;
 }
 
 /* Experiencia */
@@ -305,6 +313,10 @@ h3 {
 
 }
 
+#educacionCampo1 {
+    margin-top: 10px;
+    color: #4bcffa;
+}
 /* proyectos */
 
 .ulti {

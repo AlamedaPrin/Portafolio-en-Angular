@@ -7,11 +7,12 @@
         
         </div>
             <!-- mi boton de edición -->
-        <button class="fas fa-pen" id="aver" data-bs-toggle="modal" data-bs-target="#modalAcercaDe"></button>            
-        <button class="fas fa-trash-alt" id="aber"></button>
+        <i type="button" class="fas fa-pen" id="aver" data-bs-toggle="modal" data-bs-target="#modalAcercaDe"></i>            
+        <i type="button" class="fas fa-trash-alt" id="aber"></i>
 
         <div>        
-           <p id="Lorem" > {{miPorfolio.about}} </p>                
+           <h5 id="Lorem" > {{miPorfolioAcerca.about}} </h5>         
+              
         </div>    
 
   </section>
@@ -29,16 +30,16 @@
           <div class="mb-3">
             <label for="campoAcercaDe" class="form-label">Acerca De</label>
             <input type="text" class="form-control" id="campoAcercaDe" placeholder="Edite aquí el campo 'Acerca De'" formControlName="AcercaDe">
+
             <div *ngIf="campoAcercaDe?.invalid && campoAcercaDe?.touched">
               <div *ngIf="campoAcercaDe?.errors?.['minlength']" class="text-danger">
                 El campo debe contener mínimo 20 caracteres.
               </div> 
-
             </div>            
           </div>
         </form>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer">        
         <button type="button" id="cerrarModalAcerca" class="btn btn-secondary" data-bs-dismiss="modal" (click)="salirAcercaDe()">Salir</button>
         <button type="button" class="btn btn-primary" (click)="guardarAcercaDe()">Guardar</button>
       </div>

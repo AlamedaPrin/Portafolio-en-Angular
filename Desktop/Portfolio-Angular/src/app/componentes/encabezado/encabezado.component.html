@@ -4,7 +4,8 @@
   <div class="toolbar" role="banner">
     <img class="logo" width="100" alt="LogoAP" src="../assets/img/LogoAP.png" />
 
-    <p class="nombre">{{miPorfolio.fullName}}</p>
+    <p class="nombre">{{miPorfolioEncabezado.fullName}}</p>
+    
     <div class="spacer"></div>
     <a href="https://twitter.com/FrancoSimn3" title="Twitter">
       <svg id="twitter-logo" height="40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
@@ -14,13 +15,23 @@
           fill="#fff" />
       </svg>
     </a>
-    <a href="https://www.youtube.com/channel/UCocXWI5TuotsVr3NT0muODA" title="YouTube">
-      <svg id="youtube-logo" height="40" width="40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff">
+    <a href="https://www.youtube.com/channel/UCocXWI5TuotsVr3NT0muODA" title="YouTube" id="youtu">
+      <svg id="youtube-logo"  height="40" width="40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff">
         <path d="M0 0h24v24H0V0z" fill="none" />
         <path
           d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3-5.2 3z" />
       </svg>
     </a>
+  
+  
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button class="btn btn-info me-md-2" type="button" id="login">Registrarse</button>      
+    </div>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button class="btn btn-info me-md-4" type="button" id="login">Login</button>      
+    </div>
+   
 
   </div>
 
@@ -31,14 +42,14 @@
     <img class="img-fluid rounded-circle" src="../assets/img/Foto Perfil.png" alt="Foto Perfil">
   </div>
 
-  <div class="info">
-    <h3 id="nom">{{miPorfolio.fullName}}</h3>
-    <button *ngIf="usuarioAutenticado" type="button" class="fas fa-user-edit fa-lg btn-primary" id="icon"
-      data-bs-toggle="modal" data-bs-target="#modalEncabezado" (click)="mostrarDatosEncabezado()"></button>
+  <div class="info">    
+    <h3 id="nom">{{miPorfolioEncabezado.fullName}}</h3>
+    <i *ngIf="usuarioAutenticado" type="button" class="fas fa-user-edit fa-lg" id="icon"
+      data-bs-toggle="modal" data-bs-target="#modalEncabezado" (click)="mostrarDatosEncabezado()"></i>
   </div>
   <div class="puesto">
-    <h5 class="stack"> {{miPorfolio.position}} </h5>
-    <h5 class="bsas"> {{miPorfolio.ubication}} </h5>
+    <h5 class="stack"> {{miPorfolioEncabezado.position}} </h5>
+    <h5 class="bsas"> {{miPorfolioEncabezado.ubication}} </h5>
   </div>
 
 
@@ -93,3 +104,4 @@
     </div>
   </div>
 </div>
+

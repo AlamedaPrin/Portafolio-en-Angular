@@ -10,7 +10,7 @@ import { PorfolioService } from 'src/app/servicios/porfolio.service';
 })
 export class EncabezadoComponent implements OnInit { 
 
-  miPorfolio:any;
+  miPorfolioEncabezado:any;
   form:FormGroup;
   usuarioAutenticado:boolean = true; // por defecto debe estar en false
 
@@ -31,7 +31,7 @@ export class EncabezadoComponent implements OnInit {
   ngOnInit(): void {
     this.datosPorfolio.obtenerDatos().subscribe(data => {
       console.log(data);
-      this.miPorfolio=data;
+      this.miPorfolioEncabezado=data;
     });
   }
 
@@ -46,7 +46,7 @@ export class EncabezadoComponent implements OnInit {
       let personaEditar = new Persona(fullName, position, ubication, url); 
 
       this.datosPorfolio.editarDatosPersona(personaEditar).subscribe(data => {
-        this.miPorfolio=personaEditar;
+        this.miPorfolioEncabezado=personaEditar;
         this.form.reset(); // esto es para resetear el formulario despues de darle a guardar
       document.getElementById("cerrarModalEncabezado")?.click(); // esto es para que despues de darle a guardar se cierre la ventana. Copié la misma funcionalida de bootstrap que tenía el boton "cerrar"
       }, 
@@ -63,11 +63,11 @@ export class EncabezadoComponent implements OnInit {
   }  
 
   mostrarDatosEncabezado(){
-    
-    this.form.controls["position"].setValue(this.miPorfolio.position);
-    this.form.controls["fullName"].setValue(this.miPorfolio.fullName);
-    this.form.controls["ubication"].setValue(this.miPorfolio.ubication);
-    this.form.controls["url"].setValue(this.miPorfolio.url);
+
+    this.form.controls["position"].setValue(this.miPorfolioEncabezado.position);
+    this.form.controls["fullName"].setValue(this.miPorfolioEncabezado.fullName);
+    this.form.controls["ubication"].setValue(this.miPorfolioEncabezado.ubication);
+    this.form.controls["url"].setValue(this.miPorfolioEncabezado.url);
        
   }
   

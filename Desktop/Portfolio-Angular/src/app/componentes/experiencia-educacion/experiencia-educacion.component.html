@@ -7,42 +7,19 @@
 
         </div>
 
-        <button class="fas fa-pen" id="aver" data-bs-toggle="modal" data-bs-target="#modalEducacion"></button>               
-        <button class="fas fa-trash-alt" id="aber"></button>
+        <i type="button" class="fas fa-pen" id="aver" data-bs-toggle="modal" data-bs-target="#modalExperiencia"></i>               
+        <i type="button" class="fas fa-trash-alt" id="aber"></i>
         
-        
+       
          <div>
-        <p id="Lorem" >{{miPorfolio.experiencia}}</p>
+        <h5 id="Lorem" >{{miPorfolioExp.experiencia1}}</h5>
+        <h5 id="Lorem" >{{miPorfolioExp.experiencia2}}</h5>
           </div>
-
-          <div class="edu">
-
-            <i class="fas fa-university fa-2x" id="univ"></i>
-            <h3 class="de"> Educación </h3>
-
-          </div>
-          
-            <button class="fas fa-pen" id="aver" data-bs-toggle="modal" data-bs-target="#modalEducacion"></button>               
-            <button class="fas fa-trash-alt" id="aber"></button>
-
-           <div>
-
-            <div>
-
-               <p id="Lorem"> {{miPorfolio.descripcion1}}</p> 
-
-               <p id="Lorem"> {{miPorfolio.descripcion2}}</p>    
-               
-             </div>            
-
-                
-           </div>
-    
 
   </section>
 
   <!-- Modal -->
-<div class="modal fade" id="modalEducacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalExperiencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -50,17 +27,26 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form [formGroup]="formExp">
           <div class="mb-3">
-            <label for="campoExpEdu" class="form-label">Experiencia</label>
-            <input type="text" class="form-control" id="campoExpEdu" placeholder="Edite aquí el campo Experiencia">            
+            <label for="campoExperiencia" class="form-label">Experiencia</label>
+            <input type="text" class="form-control" id="campoExperiencia" placeholder="Edite aquí el campo Experiencia" formControlName="Experiencia"> 
+            <div *ngIf="campoExperiencia?.invalid && campoExperiencia?.touched">
+              <div *ngIf="campoExperiencia?.errors?.['minlength']" class="text-danger">
+                El campo debe contener mínimo 20 caracteres.
+                </div>
+             </div>          
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
+        <button type="button" id="cerrarModalExp" class="btn btn-secondary" data-bs-dismiss="modal" (click)="salirExperiencia()">Salir</button>
+        <button type="button" class="btn btn-primary" (click)="guardarExperiencia()">Guardar</button>
       </div>
     </div>
   </div>
 </div>
+
+
+
+

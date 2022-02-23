@@ -4,10 +4,10 @@
       <h3 class="de">Proyectos</h3>
     </div>
 
-       <button class="fas fa-pen" id="aver" data-bs-toggle="modal" data-bs-target="#modalProyecto"></button>               
-       <button class="fas fa-trash-alt" id="aber"></button>
+       <i type="button" class="fas fa-pen" id="aver" data-bs-toggle="modal" data-bs-target="#modalProyecto"></i>               
+       <i type="button" class="fas fa-trash-alt" id="aber"></i>
     <div>
-      <p id="Lorem">{{miPorfolio.Proyectos}}</p>
+      <h4 id="Lorem">{{miPorfolioProyecto.Proyectos}}</h4>
     </div>
   </footer>  
 
@@ -24,17 +24,22 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form [formGroup]="formProyecto"> 
           <div class="mb-3">
             <label for="campoProyecto" class="form-label">Proyecto</label>
-            <input type="text" class="form-control" id="campoProyecto" placeholder="Edite aquí el campo Proyecto">            
+            <input type="text" class="form-control" id="campoProyecto" placeholder="Edite aquí el campo Proyecto" formControlName="Proyecto">  
+            <div *ngIf="campoProyecto?.invalid && campoProyecto?.touched">          
+              <div *ngIf="campoProyecto?.errors?.['minlength']" class="text-danger">
+                   El campo debe contener mínimo 20 caracteres.
+              </div>
+            </div>          
           </div>
          
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
+        <button type="button" id="cerrarModalProy" class="btn btn-secondary" data-bs-dismiss="modal" (click)="salirProyecto()">Salir</button>
+        <button type="button" class="btn btn-primary" (click)="guardarProyecto()">Guardar</button>
       </div>
     </div>
   </div>
