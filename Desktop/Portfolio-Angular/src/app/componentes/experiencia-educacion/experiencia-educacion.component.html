@@ -1,4 +1,4 @@
-<section class="seccion2">
+<section class="seccion2" id="experId">
 
     <div class="acerca2">
 
@@ -8,7 +8,7 @@
         </div>
 
         <i *ngIf="usuarioAutenticadoExperiencia" type="button" class="fas fa-pen" id="aver" data-bs-toggle="modal" data-bs-target="#modalExperiencia" (click)="mostrarDatosExperiencia()"></i>               
-        <i *ngIf="usuarioAutenticadoExperiencia" type="button" class="fas fa-trash-alt" id="aber"></i>
+        <i *ngIf="usuarioAutenticadoExperiencia" type="button" class="fas fa-trash-alt" id="aber" (click)="eliminarExperiencia()"></i>
         
        
          <div>

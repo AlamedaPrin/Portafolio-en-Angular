@@ -1,4 +1,4 @@
-<section class="seccion1">
+<section class="seccion1" id="acercaId">
 
     <div class="acerca">
       
@@ -8,7 +8,7 @@
         </div>
             <!-- mi boton de edición -->
         <i *ngIf="usuarioAutenticadoAcerca" type="button" class="fas fa-pen" id="aver" data-bs-toggle="modal" data-bs-target="#modalAcercaDe" (click)="mostrarDatosAcerca()"></i>            
-        <i *ngIf="usuarioAutenticadoAcerca" type="button" class="fas fa-trash-alt" id="aber"></i>
+        <i *ngIf="usuarioAutenticadoAcerca" type="button" class="fas fa-trash-alt" id="aber" (click)="eliminarAcerca()"></i>
 
         <div>        
            <h5 id="Lorem" > {{miPorfolioAcerca.AcercaDe}} </h5>      

@@ -1,4 +1,4 @@
-<section class="seccion3">
+<section class="seccion3" id="aptitudId">
 
     <div class="habilidad">
 
@@ -8,7 +8,7 @@
    </div>
  
             <i *ngIf="usuarioAutenticadoCualidades" type="button" class="fas fa-pen" id="aver"></i>               
-            <i *ngIf="usuarioAutenticadoCualidades" type="button" class="fas fa-trash-alt" id="aber"></i>
+            <i *ngIf="usuarioAutenticadoCualidades" type="button" class="fas fa-trash-alt" id="aber" (click)="eliminarAptitudes()"></i>
            
        
           <p class="parrafs">Tecnologías Frontend</p>

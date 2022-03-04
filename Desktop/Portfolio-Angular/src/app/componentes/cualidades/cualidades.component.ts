@@ -14,4 +14,10 @@ export class CualidadesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  eliminarAptitudes(){
+
+    document.getElementById("aptitudId")?.remove();
+    
+  }
+
 }

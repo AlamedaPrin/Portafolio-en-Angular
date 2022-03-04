@@ -82,6 +82,11 @@ export class EducacionComponent implements OnInit {
   this.formEducacion.reset();
   }
 
+  eliminarEducacion(){
+
+    document.getElementById("educId")?.remove();
+    
+  }
   
 
  

@@ -83,6 +83,12 @@ export class ExperienciaEducacionComponent implements OnInit {
       this.formExp.reset()
     }
 
+    eliminarExperiencia(){
+
+      document.getElementById("experId")?.remove();
+      
+    }
+
   
 
 

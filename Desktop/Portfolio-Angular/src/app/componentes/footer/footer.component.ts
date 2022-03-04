@@ -70,4 +70,10 @@ export class FooterComponent implements OnInit {
     this.formProyecto.controls["Proyectos"].setValue(this.miPorfolioProyecto.Proyectos)
   }
 
+  eliminarProyectos(){
+
+    document.getElementById("proyectId")?.remove();
+    
+  }
+
 }

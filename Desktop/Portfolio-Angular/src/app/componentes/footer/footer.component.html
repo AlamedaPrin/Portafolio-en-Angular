@@ -1,11 +1,11 @@
-<footer class="ulti">
+<footer class="ulti" id="proyectId">
     <div class="proyecto">
       <i class="fas fa-project-diagram fa-2x"></i>
       <h3 class="de">Proyectos</h3>
     </div>
 
        <i *ngIf="usuarioAutenticadoProyecto" type="button" class="fas fa-pen" id="aver" data-bs-toggle="modal" data-bs-target="#modalProyecto" (click)="mostrarDatosProyecto()"></i>               
-       <i *ngIf="usuarioAutenticadoProyecto" type="button" class="fas fa-trash-alt" id="aber"></i>
+       <i *ngIf="usuarioAutenticadoProyecto" type="button" class="fas fa-trash-alt" id="aber" (click)="eliminarProyectos()"></i>
     <div>
       <h5 id="Lorem">{{miPorfolioProyecto.Proyectos}}</h5>
     </div>

@@ -69,4 +69,10 @@ salirAcercaDe(){
 mostrarDatosAcerca(){
   this.formAcerca.controls["AcercaDe"].setValue(this.miPorfolioAcerca.AcercaDe);
 }
+
+eliminarAcerca(){
+
+  document.getElementById("acercaId")?.remove();
+  
+}
 }
