@@ -1,63 +1,102 @@
-
 <section class="seccion2">
-
-<div class="edu">
-
+  <div class="edu">
     <i class="fas fa-university fa-2x" id="univ"></i>
-    <h3 class="de"> Educación </h3>
-
+    <h3 class="de">Educación</h3>
   </div>
-  
-    <i type="button" class="fas fa-pen" id="aver" data-bs-toggle="modal" data-bs-target="#modalEducacion"></i>               
-    <i type="button" class="fas fa-trash-alt" id="aber"></i>
 
-   <div>
+  <i
+    *ngIf="usuarioAutenticadoEducacion"
+    type="button"
+    class="fas fa-pen"
+    id="aver"
+    data-bs-toggle="modal"
+    data-bs-target="#modalEducacion"
+    (click)="mostrarDatosEducacion()"
+  ></i>
+  <i
+    *ngIf="usuarioAutenticadoEducacion"
+    type="button"
+    class="fas fa-trash-alt"
+    id="aber"
+  ></i>
 
+  <div>
     <div>
+      <h5 id="Lorem">{{ miPorfolioEdu.descripcion1 }}</h5>
 
-       <h4 id="Lorem"> {{miPorfolioEdu.descripcion1}} </h4> 
-
-       <h4 id="Lorem"> {{miPorfolioEdu.descripcion2}} </h4>    
-       
-     </div>            
-
-        
-   </div>
-
+      <h5 id="Lorem">{{ miPorfolioEdu.descripcion2 }}</h5>
+    </div>
+  </div>
 </section>
 
-  <!-- Modal -->
-  <div class="modal fade" id="modalEducacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Editar Información</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form [formGroup]="formEducacion">
-            <div class="mb-3">
-              <label for="campoEducacion1" class="form-label">Educación - campo 1</label>              
-            <input type="text" class="form-control" id="campoEducacion1" placeholder="Edite aquí el primer campo" formControlName="Educacion1">  
-            <div *ngIf="campoEducacion1?.invalid && campoEducacion1?.touched">
-              <div *ngIf="campoEducacion1?.errors?.['minlength']" class="text-danger">
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="modalEducacion"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Información</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formEducacion">
+          <div class="mb-3">
+            <label for="campoEducacion1" class="form-label"
+              >Educación - campo 1</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="campoEducacion1"
+              placeholder="Edite aquí el primer campo"
+              formControlName="descripcion1"
+            />
+            <div *ngIf="descripcion1?.invalid && descripcion1?.touched">
+              <div
+                *ngIf="descripcion1?.errors?.['minlength']"
+                class="text-danger"
+              >
                 El campo debe contener mínimo 20 caracteres.
               </div>
             </div>
 
-            <label for="campoEducacion1" class="form-label" id="educacionCampo1">Educación - campo 2</label>              
-            <input type="text" class="form-control" id="campoEducacion1" placeholder="Edite aquí el segundo campo" formControlName="Educacion2">  
-            
-             </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" id="cerrarModalEdu" class="btn btn-secondary" data-bs-dismiss="modal" (click)="salirEducacion()">Salir</button>
-          <button type="button" class="btn btn-primary" (click)="guardarEducacion()">Guardar</button>
-        </div>
+            <label for="campoEducacion1" class="form-label" id="educacionCampo1"
+              >Educación - campo 2</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="campoEducacion1"
+              placeholder="Edite aquí el segundo campo"
+              formControlName="descripcion2"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          id="cerrarModalEdu"
+          class="btn btn-dark"
+          data-bs-dismiss="modal"
+          (click)="salirEducacion()"
+        >
+          Salir
+        </button>
+        <button type="button" class="btn btn-info" (click)="guardarEducacion()">
+          Guardar
+        </button>
       </div>
     </div>
   </div>
-
-
-  
+</div>

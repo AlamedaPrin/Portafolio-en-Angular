@@ -343,14 +343,30 @@ h3 {
 display: flex;
 }
 
+
+
 .pie {
     border: solid #fff 2px;
 }
 
-/* Modal */
+/* Modales */
 
-#exampleModalLabel {
-    color: black;
+.modal-title {
+
+    margin-left: 0px;    
+    color: #4bcffa;
+    font-family:'Lucida Sans Unicode';
+    font-size: 150%;
+    
+    
+}
+
+.form-label {
+
+    padding: 4px;
+    color: #4bcffa;
+    font-weight: lighter;     
+    font-family:'Lucida Sans Unicode';
 }
 
 

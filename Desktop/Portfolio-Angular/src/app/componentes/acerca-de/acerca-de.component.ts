@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PorfolioService } from 'src/app/servicios/porfolio.service';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Acerca } from 'src/app/Entidades/acerca';
+import { AcercaService } from 'src/app/servicios/acerca.service';
 
 @Component({
   selector: 'app-acerca-de',
@@ -11,19 +12,21 @@ export class AcercaDeComponent implements OnInit {
 
   miPorfolioAcerca:any;
   formAcerca:FormGroup;
+  usuarioAutenticadoAcerca:boolean = true; // Se muestran los botones. Por defecto debe estar en false
 
-  constructor(private datosPorfolio:PorfolioService, private acercaFormBuilder:FormBuilder) {
+  constructor(private datosAcercaPorfolio:AcercaService, private acercaFormBuilder:FormBuilder) {
     this.formAcerca = this.acercaFormBuilder.group({
       AcercaDe:['', [Validators.minLength(20)]]
     })
    }
 
-   get campoAcercaDe(){
-     return this.formAcerca.get("campoAcercaDe"); 
+   get AcercaDe()
+   {
+     return this.formAcerca.get("AcercaDe"); 
    }
 
   ngOnInit(): void { 
-    this.datosPorfolio.obtenerDatos().subscribe(data => {
+    this.datosAcercaPorfolio.obtenerDatosAcerca().subscribe(data => {
     console.log(data);
     this.miPorfolioAcerca=data;
   });
@@ -33,17 +36,37 @@ export class AcercaDeComponent implements OnInit {
 
   guardarAcercaDe(){    
     if (this.formAcerca.valid){ 
-      this.formAcerca.reset();   
-    document.getElementById("cerrarModalAcerca")?.click();
+
+       let AcercaDe = this.formAcerca.controls["AcercaDe"].value;
+
+       let acercaEditar = new Acerca (AcercaDe);
+
+      this.datosAcercaPorfolio.editarDatosAcerca(acercaEditar).subscribe(data => {
+        this.miPorfolioAcerca=acercaEditar;
+        this.formAcerca.reset();   
+        document.getElementById("cerrarModalAcerca")?.click();
+      },
+      error => {
+      alert("No se pudo actualizar el registro. Por favor, intente nuevamente o contacte al administrador")
+    });
+      
+      
   }
-  else {    
-    alert("El campo debe contener mínimo 20 caracteres");
+  else 
+    {      
     this.formAcerca.markAllAsTouched();
-  }
+    }
 
 }
 
+
+
 salirAcercaDe(){ 
   this.formAcerca.reset();   
+}
+
+
+mostrarDatosAcerca(){
+  this.formAcerca.controls["AcercaDe"].setValue(this.miPorfolioAcerca.AcercaDe);
 }
 }

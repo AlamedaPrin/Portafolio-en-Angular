@@ -55,11 +55,12 @@ export class EncabezadoComponent implements OnInit {
       });   
 
     }
+
     else 
-  {
-    
+  {    
     this.form.markAllAsTouched();
   }
+  
   }  
 
   mostrarDatosEncabezado(){

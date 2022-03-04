@@ -7,8 +7,8 @@
 
         </div>
 
-        <i type="button" class="fas fa-pen" id="aver" data-bs-toggle="modal" data-bs-target="#modalExperiencia"></i>               
-        <i type="button" class="fas fa-trash-alt" id="aber"></i>
+        <i *ngIf="usuarioAutenticadoExperiencia" type="button" class="fas fa-pen" id="aver" data-bs-toggle="modal" data-bs-target="#modalExperiencia" (click)="mostrarDatosExperiencia()"></i>               
+        <i *ngIf="usuarioAutenticadoExperiencia" type="button" class="fas fa-trash-alt" id="aber"></i>
         
        
          <div>
@@ -29,19 +29,22 @@
       <div class="modal-body">
         <form [formGroup]="formExp">
           <div class="mb-3">
-            <label for="campoExperiencia" class="form-label">Experiencia</label>
-            <input type="text" class="form-control" id="campoExperiencia" placeholder="Edite aquí el campo Experiencia" formControlName="Experiencia"> 
-            <div *ngIf="campoExperiencia?.invalid && campoExperiencia?.touched">
-              <div *ngIf="campoExperiencia?.errors?.['minlength']" class="text-danger">
+            <label for="campoExperiencia" class="form-label">Experiencia - Campo 1</label>
+            <input type="text" class="form-control" id="campoExperiencia" placeholder="Edite aquí el campo 1" formControlName="experiencia1"> 
+            <div *ngIf="experiencia1?.invalid && experiencia1?.touched">
+              <div *ngIf="experiencia1?.errors?.['minlength']" class="text-danger">
                 El campo debe contener mínimo 20 caracteres.
                 </div>
-             </div>          
+             </div> 
+             
+             <label for="campoExperiencia" class="form-label">Experiencia - Campo 2</label>
+             <input type="text" class="form-control" id="campoExperiencia" placeholder="Edite aquí el campo 2" formControlName="experiencia2"> 
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id="cerrarModalExp" class="btn btn-secondary" data-bs-dismiss="modal" (click)="salirExperiencia()">Salir</button>
-        <button type="button" class="btn btn-primary" (click)="guardarExperiencia()">Guardar</button>
+        <button type="button" id="cerrarModalExp" class="btn btn-dark" data-bs-dismiss="modal" (click)="salirExperiencia()">Salir</button>
+        <button type="button" class="btn btn-info" (click)="guardarExperiencia()">Guardar</button>
       </div>
     </div>
   </div>
