@@ -1,3 +1,4 @@
+<div style="background-color: #1e272e;">
 <header class="cabecera">
  
 
@@ -22,14 +23,16 @@
           d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3-5.2 3z" />
       </svg>
     </a>
+
   
-  
+
+    
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <button class="btn btn-info me-md-2" type="button" id="login">Registrarse</button>      
-    </div>
+      <i type="button" class="btn btn-info me-md-2" id="login" data-bs-toggle="modal" data-bs-target="#modalRegistro">Registrarse</i>     
+    </div> 
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <button class="btn btn-info me-md-4" type="button" id="login">Login</button>      
+      <i class="btn btn-info me-md-4" type="button" id="login" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</i>      
     </div>
    
 
@@ -42,20 +45,23 @@
     <img class="img-fluid rounded-circle" src="../assets/img/Foto Perfil.png" alt="Foto Perfil">
   </div>
 
-  <div class="info">    
+  
+  <div class="info" id="encabId">    
     <h3 id="nom">{{miPorfolioEncabezado.fullName}}</h3>
     <i *ngIf="usuarioAutenticado" type="button" class="fas fa-user-edit fa-lg" id="icon"
       data-bs-toggle="modal" data-bs-target="#modalEncabezado" (click)="mostrarDatosEncabezado()"></i>
-  </div>
+      <i *ngIf="usuarioAutenticado" type="button" class="fas fa-trash-alt" id="icon" (click)="eliminarEncabezado()"></i>
+      </div> 
+      
+  
   <div class="puesto">
     <h5 class="stack"> {{miPorfolioEncabezado.position}} </h5>
-    <h5 class="bsas"> {{miPorfolioEncabezado.ubication}} </h5>
+    <h5 class="stack"> {{miPorfolioEncabezado.ubication}} </h5>
   </div>
 
 
 </header>
-
-
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="modalEncabezado" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -104,4 +110,117 @@
     </div>
   </div>
 </div>
+
+
+
+<!-- Boton Login -->
+<div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ingrese</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">            
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+          </div>  
+          <div class="d-grid gap-2 d-md-flex">       
+          <button type="submit" class="btn btn-info">Submit</button>
+        </div>
+        </form>   
+
+
+      </div>     
+    </div>
+  </div>
+</div>
+
+<!-- Boton Registro -->
+<div class="modal fade" id="modalRegistro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Regístrese</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form class="row g-3 needs-validation" novalidate>
+          <div class="col-md-6">
+            <label for="validationCustom01" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="validationCustom01" required>
+            <div class="valid-feedback">
+              Bien!
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="validationCustom02" class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="validationCustom02" required>
+            <div class="valid-feedback">
+              Bien!
+            </div>
+          </div>
+          <div class="col-md-12">
+            <label for="validationCustomUsername" class="form-label">Usuario</label>
+            <div class="input-group has-validation">
+              <span class="input-group-text" id="inputGroupPrepend">@</span>
+              <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+              <div class="invalid-feedback">
+                Elija un nombre de usuario.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="validationCustom03" class="form-label">Ciudad</label>
+            <input type="text" class="form-control" id="validationCustom03" required>
+            <div class="invalid-feedback">
+              Por favor, indique una ciudad válida.
+            </div>
+          </div>         
+          <div class="col-md-6">
+            <label for="validationCustom05" class="form-label">Código postal</label>
+            <input type="text" class="form-control" id="validationCustom05" required>
+            <div class="invalid-feedback">
+              Por favor, indique un código postal válido.
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+              <label class="form-check-label" for="invalidCheck">
+                Acepto los términos y condiciones
+              </label>
+              <div class="invalid-feedback">
+                Tiene que aceptar antes de continuar.
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-info" type="submit">Enviar</button>
+          </div>
+        </form>  
+
+
+      </div>     
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
 
