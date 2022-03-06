@@ -10,7 +10,7 @@
     class="fas fa-pen"
     id="aver"
     data-bs-toggle="modal"
-    data-bs-target="#modalEducacion"
+   data-bs-target="#modalEducacion"
     (click)="mostrarDatosEducacion()"
   ></i>
   <i
@@ -20,19 +20,41 @@
     id="aber"
     (click)="eliminarEducacion()"
   ></i>
+  
 
-  <div>
-    <div class="logoEdu">
-      <img src="../assets/img/logo-mumuki.png" alt="Logo Mumuki" id="tamanioLogoEdu">
-      <h5 id="infoEdu">{{ miPorfolioEdu.descripcion1 }}</h5>
+
+  <!-- Desde aca -->
+
+  <div class="container-fluid educacion">
+    <div class="row mb-2">
+      <div class="col-1">
+        <img src="../assets/img/logo-mumuki.png" alt="Logo Mumuki" class="img-fluid" id="tamanioLogoEdu">
       </div>
+      <div class="col">
+        <h2 id="infoEdu">Mumuki</h2>      
+        <h4>Primera etapa aprobada de Argentina Programa: #SéProgramar</h4>
+        <p>Ago 2021 - Nov 2021</p>             
+      </div>   
 
-      <div class="logoEdu">
-        <img src="../assets/img/INTI img.jpg" alt="Logo INTI" id="tamanioLogoEdu">
-      <h5 id="infoEdu">{{ miPorfolioEdu.descripcion2 }}</h5>
+      <div class="row">
+        <div class="col-1">
+          <img src="../assets/img/INTI img.jpg" alt="Logo INTI" class="img-fluid" id="tamanioLogoEdu">
+        </div>
+        <div class="col">
+          <h2  id="infoEdu">INTI</h2>        
+          <h4> Segunda etapa aprobada de Argentina Programa: #YoProgramo </h4>
+          <p> Nov 2021 - May 2022</p>          
+        </div>
+      </div>
     </div>
-  </div>
+  </div>     
+
+<!-- Hasta aca -->
+
 </section>
+
+
+
 
 <!-- Modal -->
 <div
@@ -54,7 +76,7 @@
         ></button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="formEducacion">
+       <form [formGroup]="formEducacion">
           <div class="mb-3">
             <label for="campoEducacion1" class="form-label"
               >Educación - campo 1</label
@@ -86,7 +108,7 @@
               formControlName="descripcion2"
             />
           </div>
-        </form>
+        </form> 
       </div>
       <div class="modal-footer">
         <button
@@ -94,8 +116,7 @@
           id="cerrarModalEdu"
           class="btn btn-dark"
           data-bs-dismiss="modal"
-          (click)="salirEducacion()"
-        >
+          (click)="salirEducacion()">
           Salir
         </button>
         <button type="button" class="btn btn-info" (click)="guardarEducacion()">

@@ -41,6 +41,7 @@ export class EducacionComponent implements OnInit {
       console.log(data);
       this.miPorfolioEdu = data;
     });
+    
   }
 
   //métodos

@@ -1,13 +1,11 @@
 {
-  "descripcion1": "Primera etapa aprobada de Argentina Programa: #SéProgramar. Certificado expedido por Mumuki y CESSI Argentina",
-  "descripcion2": "Segunda etapa aprobada de Argentina Programa: #YoProgramo. Certificado expedido por INTI Argentina y el Ministerio de desarrollo productivo",
-
+  
   "educacion": [
     {
       "school": "Mumuki",
       "career": "Primera etapa aprobada de Argentina Programa: #SéProgramar",
-      "start": "ago 2021",
-      "end": "nov 2021"
+      "start": "Agosto - 2021",
+      "end": "Noviembre - 2021"
     },
     {
       "school": "INTI",
@@ -15,5 +13,11 @@
       "start": "nov 2021",
       "end": "may 2022"
     }
-  ]
+  ],
+
+  "descripcion1": "Primera etapa aprobada de Argentina Programa: #SéProgramar. Certificado expedido por Mumuki y CESSI Argentina",
+  "descripcion2": "Segunda etapa aprobada de Argentina Programa: #YoProgramo. Certificado expedido por INTI Argentina y el Ministerio de desarrollo productivo"
+
 }
+
+

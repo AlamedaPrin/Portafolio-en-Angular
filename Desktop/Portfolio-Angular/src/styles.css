@@ -129,13 +129,20 @@ h5 {
   margin-left: 0.5cm;
 }
 
-.stack {
-  padding: 5px;
+/* Datos Perfil */
+
+.stack {  
   font-size: 1.3em;
   font-family: Arial, Helvetica, sans-serif;
-  margin-left: 1.5cm;  
-  
+  margin-left: 1.5cm;   
 }
+
+.puesto {  
+  margin-top: 1.6cm;
+  margin-left: 0.5cm;
+  background-color: #1e272e;
+}
+
 .info {
   flex: 1;
   margin-top: 0.5cm;
@@ -146,11 +153,6 @@ h5 {
 
 span {
   color: #4bcffa;
-}
-
-.puesto {
-  margin-top: 1.8cm;
-  background-color: #1e272e;
 }
 
 #icon {
@@ -257,9 +259,8 @@ h2 {
 
 /* Educación */
 
-.logoEdu {
-  display:flex;  
-  padding: 1em;
+.educacion {
+  padding: 1cm;
 }
 
 #tamanioLogoEdu {
@@ -267,17 +268,8 @@ h2 {
 }
 
 #infoEdu {
-
-  color: #1e272e;
-  margin-top: 0.3cm;
-  margin-left: 0;
-  padding: 10px;
-
+  color: #1e272e; 
 }
-
-
-
-
 
 /* Experiencia */
 

@@ -11,7 +11,7 @@ export class EducacionService {
 
   obtenerDatosEducacion(): Observable<any> {
     return this.http.get('./assets/data/educacion.json');
-  }
+  } 
 
   editarDatosEducacion(educacion: Educacion): Observable<any> {
     return this.http.post('http://localhost:3000/posts', educacion);
