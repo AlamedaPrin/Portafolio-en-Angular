@@ -7,10 +7,13 @@ import { Persona } from '../Entidades/persona';
   providedIn: 'root',
 })
 export class PorfolioService {
+
+  url:string="http://localhost:8080/persona";
+
   constructor(private http: HttpClient) {}
 
-  obtenerDatos(): Observable<any> {
-    return this.http.get('./assets/data/data.json');
+  obtenerDatos(): Observable<Persona> {
+    return this.http.get<Persona>(this.url+"/1");
   }
 
   editarDatosPersona(persona: Persona): Observable<any> {

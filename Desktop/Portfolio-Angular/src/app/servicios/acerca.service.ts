@@ -1,19 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Acerca } from '../Entidades/acerca';
+import { AcercaDe } from '../Entidades/acerca';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AcercaService {
+
+  url:string="http://localhost:8080/acerca";
+
   constructor(private http: HttpClient) {}
 
-  obtenerDatosAcerca(): Observable<any> {
-    return this.http.get('./assets/data/acerca.json');
+  obtenerDatosAcerca(): Observable<AcercaDe> {
+    return this.http.get<AcercaDe>(this.url+"/1");
   }
 
-  editarDatosAcerca(acerca: Acerca): Observable<any> {
+  editarDatosAcerca(acerca: AcercaDe): Observable<any> {
     return this.http.post('http://localhost:3000/posts', acerca);
   }
 }

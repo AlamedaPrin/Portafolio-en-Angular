@@ -5,7 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Acerca } from 'src/app/Entidades/acerca';
+import { AcercaDe } from 'src/app/Entidades/acerca';
 import { AcercaService } from 'src/app/servicios/acerca.service';
 
 @Component({
@@ -14,7 +14,7 @@ import { AcercaService } from 'src/app/servicios/acerca.service';
   styleUrls: ['./acerca-de.component.css'],
 })
 export class AcercaDeComponent implements OnInit {
-  miPorfolioAcerca: any;
+  miPorfolioAcerca!: AcercaDe;
   formAcerca: FormGroup;
   usuarioAutenticadoAcerca: boolean = true; // Se muestran los botones. Por defecto debe estar en false
 
@@ -40,9 +40,10 @@ export class AcercaDeComponent implements OnInit {
 
   guardarAcercaDe() {
     if (this.formAcerca.valid) {
-      let AcercaDe = this.formAcerca.controls['AcercaDe'].value;
+      
+      let acercade = this.formAcerca.controls['AcercaDe'].value;
 
-      let acercaEditar = new Acerca(AcercaDe);
+      let acercaEditar = new AcercaDe (acercade);
 
       this.datosAcercaPorfolio.editarDatosAcerca(acercaEditar).subscribe(
         (data) => {
@@ -67,11 +68,20 @@ export class AcercaDeComponent implements OnInit {
 
   mostrarDatosAcerca() {
     this.formAcerca.controls['AcercaDe'].setValue(
-      this.miPorfolioAcerca.AcercaDe
+      this.miPorfolioAcerca.acerca
     );
   }
 
   eliminarAcerca() {
-    document.getElementById('acercaId')?.remove();
+    document.getElementById('campoAcerca')?.remove();
   }
+
+  
+
+  agregarAcerca() {   
+
+    
+  }
+
+  
 }

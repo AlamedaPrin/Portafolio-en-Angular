@@ -9,22 +9,22 @@ import { ProyectosService } from 'src/app/servicios/proyectos.service'; // Impor
   styleUrls: ['./footer.component.css'],
 })
 export class FooterComponent implements OnInit {
-  //Atributos
-  miPorfolioProyecto: any;
+  
+  miPorfolioProyecto!: Proyecto;
   formProyecto: FormGroup;
   usuarioAutenticadoProyecto: boolean = true; // por defecto debe estar en false
 
-  //Contructor de clase
+  
   constructor(
     private datosProyectos: ProyectosService,
     private proyectosFormBuilder: FormBuilder
   ) {
     this.formProyecto = this.proyectosFormBuilder.group({
-      Proyectos: ['', [Validators.minLength(20)]],
+      Proyecto: ['', [Validators.minLength(20)]],
     });
   }
 
-  //Getter
+  
   get Proyectos() {
     return this.formProyecto.get('Proyectos');
   }
@@ -32,7 +32,7 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
     this.datosProyectos.obtenerDatosProyectos().subscribe((data) => {
       console.log(data);
-      this.miPorfolioProyecto = data;
+      this.miPorfolioProyecto=data;
     });
   }
 
@@ -66,7 +66,7 @@ export class FooterComponent implements OnInit {
 
   mostrarDatosProyecto() {
     this.formProyecto.controls['Proyectos'].setValue(
-      this.miPorfolioProyecto.Proyectos
+      this.miPorfolioProyecto.proyecto
     );
   }
 

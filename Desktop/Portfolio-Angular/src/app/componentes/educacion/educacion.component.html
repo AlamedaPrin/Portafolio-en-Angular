@@ -32,18 +32,24 @@
       </div>
       <div class="col">
         <h2 id="infoEdu">Mumuki</h2>      
-        <h4>Primera etapa aprobada de Argentina Programa: #SéProgramar</h4>
-        <p>Ago 2021 - Nov 2021</p>             
+        <h4>Primera etapa de Argentina Programa: #SéProgramar</h4>
+        <p>Ago 2021 - Nov 2021</p>                     
       </div>   
+      <div class="col-1">
+        <i type="button" class="fas fa-trash-alt"></i>
+      </div>
 
-      <div class="row">
+      <div class="row mb-2">
         <div class="col-1">
           <img src="../assets/img/INTI img.jpg" alt="Logo INTI" class="img-fluid" id="tamanioLogoEdu">
         </div>
         <div class="col">
           <h2  id="infoEdu">INTI</h2>        
-          <h4> Segunda etapa aprobada de Argentina Programa: #YoProgramo </h4>
+          <h4> Segunda etapa de Argentina Programa: #YoProgramo </h4>
           <p> Nov 2021 - May 2022</p>          
+        </div>
+        <div class="col-1">
+          <i type="button" class="fas fa-trash-alt"></i>
         </div>
       </div>
     </div>
@@ -57,6 +63,7 @@
 
 
 <!-- Modal -->
+
 <div
   class="modal fade"
   id="modalEducacion"
@@ -78,36 +85,24 @@
       <div class="modal-body">
        <form [formGroup]="formEducacion">
           <div class="mb-3">
-            <label for="campoEducacion1" class="form-label"
-              >Educación - campo 1</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              id="campoEducacion1"
-              placeholder="Edite aquí el primer campo"
-              formControlName="descripcion1"
-            />
+            
+            <label for="campoEducacion1" class="form-label">Educación - campo 1</label>                     
+            <input type="text" class="form-control" id="campoEducacion1" placeholder="Edite aquí el primer campo" formControlName="descripcion1"/>             
+              
+              
+            
             <div *ngIf="descripcion1?.invalid && descripcion1?.touched">
-              <div
-                *ngIf="descripcion1?.errors?.['minlength']"
-                class="text-danger"
-              >
+              <div *ngIf="descripcion1?.errors?.['minlength']" class="text-danger">
+              
                 El campo debe contener mínimo 20 caracteres.
+
               </div>
             </div>
 
-            <label for="campoEducacion1" class="form-label" id="educacionCampo1"
-              >Educación - campo 2</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              id="campoEducacion1"
-              placeholder="Edite aquí el segundo campo"
-              formControlName="descripcion2"
-            />
-          </div>
+            <label for="campoEducacion1" class="form-label" id="educacionCampo1">Educación - campo 2</label>                         
+            <input type="text" class="form-control" id="campoEducacion1" placeholder="Edite aquí el segundo campo" formControlName="descripcion2"/>
+       
+            </div>
         </form> 
       </div>
       <div class="modal-footer">

@@ -1,6 +1,20 @@
 {
-    "school": "INTI",
-    "career": "Segunda etapa de Argentina Programa: #YoProgramo",
-     "start": "nov 2021",
-       "end": "may 2022"
+  
+  "educacion": [
+    {
+      "school": "Mumuki",
+      "img": "../assets/img/logo-mumuki.png",
+      "career": "Primera etapa de Argentina Programa: #SéProgramar",
+      "start": "Ago 2021",
+      "end": "Nov 2021"
+    },
+    {
+      "school": "INTI",
+      "img": "../assets/img/INTI img.jpg",
+      "career": "Segunda etapa de Argentina Programa: #YoProgramo",
+      "start": "nov 2021",
+      "end": "may 2022"
+    }
+  ]
+
 }

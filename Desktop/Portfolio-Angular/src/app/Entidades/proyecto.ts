@@ -1,7 +1,7 @@
 export class Proyecto {
-  Proyectos: string;
+  proyecto: string;
 
-  constructor(Proyectos: string) {
-    this.Proyectos = Proyectos;
+  constructor(proyecto: string) {
+    this.proyecto = proyecto;
   }
 }

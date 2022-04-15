@@ -10,8 +10,10 @@ export class ProyectosService {
   // paso el valor 'http' como parametro del constructor para poder luego usarlo como atributo y utlizar sus métodos
   constructor(private http: HttpClient) {}
 
-  obtenerDatosProyectos(): Observable<any> {
-    return this.http.get('./assets/data/proyectos.json');
+  url:string = "http://localhost:8080/proyecto";
+
+  obtenerDatosProyectos(): Observable<Proyecto> {
+    return this.http.get<Proyecto>(this.url+"/1");
   };
 
   editarDatosProyectos(proyecto:Proyecto):Observable<any> {
