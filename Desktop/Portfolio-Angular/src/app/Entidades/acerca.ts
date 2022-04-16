@@ -1,6 +1,5 @@
 export class AcercaDe {
-    acerca: string;   
-  
+    acerca: string;     
     constructor (acerca: string) {    
         this.acerca=acerca;           
     }

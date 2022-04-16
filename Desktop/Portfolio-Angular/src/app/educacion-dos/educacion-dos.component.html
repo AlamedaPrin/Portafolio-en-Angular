@@ -2,24 +2,7 @@
     <div class="edu">
       <i class="fas fa-university fa-2x" id="univ"></i>
       <h3 class="de">Educación</h3>
-    </div>
-  
-    <i    
-      type="button"
-      class="fas fa-pen"
-      id="aver"
-      data-bs-toggle="modal"
-      data-bs-target="#modalEducacionDos"   
-      *ngIf="usuarioAutenticadoEducacionDos"  
-    ></i>
-
-    <i      
-      type="button"
-      class="fas fa-trash-alt"
-      id="aber" 
-      *ngIf="usuarioAutenticadoEducacionDos"     
-    ></i>
-    
+    </div>    
   
   
     <!-- Desde aca -->
@@ -27,16 +10,25 @@
     <div class="container-fluid educacion">
       <div *ngFor="let item of educacionDos" class="row mb-2">
         <div class="col-1">
-          <img [src]="item.img" alt="Logo Mumuki" class="img-fluid" id="tamanioLogoEdu">
+          <img [src]="item.img" alt="Logo escuela" class="img-fluid" id="tamanioLogoEdu">
         </div>
-        <div class="col">
+        <div class="col-9">
 
           <h2 id="infoEdu">{{item.school}}</h2>      
           <h4>{{item.career}}</h4>
-          <p>{{item.start}} - {{item.end}}</p>
+          <p>{{item.comienzo}} - {{item.fin}}</p>
           
-        </div>  
+        </div> 
+        <div class="col-2">
+          <i type="button" class="fas fa-pen" data-bs-toggle="modal" id="aver" data-bs-target="#modalEducacionDos" *ngIf="usuarioAutenticadoEducacionDos"></i>
+          <i type="button" class="fas fa-trash-alt" id="aber" *ngIf="usuarioAutenticadoEducacionDos" ></i>
+        </div> 
       </div>
+
+      <div>
+        <i type="button" class="fa fa-plus" id="plusEdu">Agregar</i>
+      </div>
+      
     </div>     
   
   <!-- Hasta aca -->

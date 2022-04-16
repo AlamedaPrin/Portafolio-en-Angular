@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder,  FormGroup, Validators, } from '@angular/forms';   
 import { AcercaDe } from 'src/app/Entidades/acerca';
 import { AcercaService } from 'src/app/servicios/acerca.service';
 
@@ -23,12 +18,12 @@ export class AcercaDeComponent implements OnInit {
     private acercaFormBuilder: FormBuilder
   ) {
     this.formAcerca = this.acercaFormBuilder.group({
-      AcercaDe: ['', [Validators.minLength(20)]],
+      acercaDe: [''],
     });
   }
 
-  get AcercaDe() {
-    return this.formAcerca.get('AcercaDe');
+  get acercaDe() {
+    return this.formAcerca.get('acercaDe');
   }
 
   ngOnInit(): void {
@@ -41,9 +36,9 @@ export class AcercaDeComponent implements OnInit {
   guardarAcercaDe() {
     if (this.formAcerca.valid) {
       
-      let acercade = this.formAcerca.controls['AcercaDe'].value;
+      let acercaDe = this.formAcerca.controls['acercaDe'].value;
 
-      let acercaEditar = new AcercaDe (acercade);
+      let acercaEditar = new AcercaDe (acercaDe);
 
       this.datosAcercaPorfolio.editarDatosAcerca(acercaEditar).subscribe(
         (data) => {
@@ -67,9 +62,9 @@ export class AcercaDeComponent implements OnInit {
   }
 
   mostrarDatosAcerca() {
-    this.formAcerca.controls['AcercaDe'].setValue(
-      this.miPorfolioAcerca.acerca
-    );
+    this.formAcerca.controls['acercaDe'].setValue(this.miPorfolioAcerca.acerca);
+      
+    
   }
 
   eliminarAcerca() {

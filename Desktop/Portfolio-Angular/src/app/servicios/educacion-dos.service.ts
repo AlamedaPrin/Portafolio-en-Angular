@@ -10,12 +10,18 @@ export class EducacionDosService {
 
   constructor(private http:HttpClient) { }
 
-  obtenerDatosEducacionDos(): Observable<any> {
-    return this.http.get('./assets/data/educacionDos.json');
+  url:string = 'http://localhost:8080/educacion';
+
+  obtenerDatosEducacionDos(): Observable<EducacionDos[]> {
+    return this.http.get<EducacionDos[]>(this.url);
   } 
 
   editarDatosEducacionDos(educacionDos: EducacionDos): Observable<any> {
     return this.http.post('http://localhost:3000/posts', educacionDos);
+  }
+
+  eliminarDatosEducacionDos(id: number): Observable<any>{
+    return this.http.delete(this.url+"/"+id)
   }
 
 }

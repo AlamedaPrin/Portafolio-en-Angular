@@ -10,12 +10,15 @@
             <!-- botones de edición -->
         <i *ngIf="usuarioAutenticadoAcerca" type="button" class="fas fa-pen" id="aver" data-bs-toggle="modal"
           data-bs-target="#modalAcercaDe" (click)="mostrarDatosAcerca()"></i>
-        <i *ngIf="usuarioAutenticadoAcerca" type="button" class="fas fa-trash-alt" id="aber" (click)="eliminarAcerca()"></i>
-        <i type="button" class="fa fa-plus" id="aver" (click)="agregarAcerca()"></i>
+        <i *ngIf="usuarioAutenticadoAcerca" type="button" class="fas fa-trash-alt" id="aber" (click)="eliminarAcerca()"></i>        
             <!------------------------>
 
     <div id="campoAcerca">
       <h5 id="Lorem"> {{miPorfolioAcerca.acerca}}</h5> 
+    </div>
+
+    <div>
+      <i type="button" class="fa fa-plus" id="plus" (click)="agregarAcerca()">Agregar</i>
     </div>
 
          
@@ -38,14 +41,13 @@
       <div class="modal-body">
         <form [formGroup]="formAcerca">
           <div class="mb-3">
+
             <label for="campoAcercaDe" class="form-label">Acerca De</label>
-            <input type="text" class="form-control" id="campoAcercaDe" placeholder="Edite aquí el campo 'Acerca De'" formControlName="AcercaDe">
-            <div *ngIf="AcercaDe?.invalid && AcercaDe?.touched">
-              <div *ngIf="AcercaDe?.errors?.['minlength']" class="text-danger">
-                El campo debe contener mínimo 20 caracteres.
+            <input type="text" class="form-control" id="campoAcercaDe" placeholder="Edite aquí el campo 'Acerca De'" formControlName="acercaDe">
+            
               </div> 
-            </div>            
-          </div>
+                      
+        
         </form>
       </div>
       <div class="modal-footer">        

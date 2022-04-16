@@ -17,6 +17,6 @@ export class AcercaService {
   }
 
   editarDatosAcerca(acerca: AcercaDe): Observable<any> {
-    return this.http.post('http://localhost:3000/posts', acerca);
+    return this.http.put(this.url, acerca);
   }
 }

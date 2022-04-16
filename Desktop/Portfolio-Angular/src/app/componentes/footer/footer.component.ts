@@ -20,13 +20,13 @@ export class FooterComponent implements OnInit {
     private proyectosFormBuilder: FormBuilder
   ) {
     this.formProyecto = this.proyectosFormBuilder.group({
-      Proyecto: ['', [Validators.minLength(20)]],
+      Proyectos: [''],  //1
     });
   }
 
   
-  get Proyectos() {
-    return this.formProyecto.get('Proyectos');
+  get Proyectos() {   //2
+    return this.formProyecto.get('Proyectos'); //3
   }
 
   ngOnInit(): void {
@@ -38,9 +38,10 @@ export class FooterComponent implements OnInit {
 
   guardarProyecto() {
     if (this.formProyecto.valid) {
-      let Proyectos = this.formProyecto.controls['Proyectos'].value;
 
-      let proyectoEditar = new Proyecto(Proyectos);
+      let Proyectos = this.formProyecto.controls['Proyectos'].value;   //4
+
+      let proyectoEditar = new Proyecto(this.miPorfolioProyecto.id, Proyectos); //5
 
       this.datosProyectos.editarDatosProyectos(proyectoEditar).subscribe(
         (data) => {
@@ -65,9 +66,9 @@ export class FooterComponent implements OnInit {
   }
 
   mostrarDatosProyecto() {
-    this.formProyecto.controls['Proyectos'].setValue(
-      this.miPorfolioProyecto.proyecto
-    );
+
+    this.formProyecto.controls['proyecto'].setValue(this.miPorfolioProyecto.proyecto);      
+    
   }
 
   eliminarProyectos() {

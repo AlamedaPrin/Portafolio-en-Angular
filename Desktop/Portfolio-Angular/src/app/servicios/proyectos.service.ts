@@ -7,7 +7,7 @@ import { Proyecto } from '../Entidades/proyecto';
   providedIn: 'root',
 })
 export class ProyectosService {
-  // paso el valor 'http' como parametro del constructor para poder luego usarlo como atributo y utlizar sus métodos
+  
   constructor(private http: HttpClient) {}
 
   url:string = "http://localhost:8080/proyecto";
@@ -17,7 +17,7 @@ export class ProyectosService {
   };
 
   editarDatosProyectos(proyecto:Proyecto):Observable<any> {
-  return this.http.post('http://localhost:3000/posts', proyecto)
+  return this.http.put(this.url, proyecto)
  }
 
 }

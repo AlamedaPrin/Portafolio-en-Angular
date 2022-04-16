@@ -44,7 +44,7 @@ export class EducacionDosComponent implements OnInit {
 
   ngOnInit(): void {
     this.datosEducacionDosPorfolio.obtenerDatosEducacionDos().subscribe(data => {
-      this.educacionDos=data["educacion"];
+      this.educacionDos=data
     });
   }
 
@@ -54,7 +54,7 @@ export class EducacionDosComponent implements OnInit {
 
     if (this.formEducacionDos.valid) {
 
-      let id      =  this.formEducacionDos.controls['id'].value;
+      
       let school  =  this.formEducacionDos.controls['school'].value;
       let career  =  this.formEducacionDos.controls['career'].value;
       let img     =  this.formEducacionDos.controls['img'].value;
@@ -62,8 +62,8 @@ export class EducacionDosComponent implements OnInit {
       let fin     =  this.formEducacionDos.controls['fin'].value;
       let idPersona =  this.formEducacionDos.controls['idPersona'].value;
 
-      let educacionDosEditar = new EducacionDos(id, school, career, img, comienzo, fin, idPersona);
-
+      let educacionDosEditar = new EducacionDos(this.educacionDos.id, school, career, img, comienzo, fin, idPersona);
+ 
       this.datosEducacionDosPorfolio.editarDatosEducacionDos(educacionDosEditar).subscribe((data) => {
         this.educacionDos = educacionDosEditar;
         this.formEducacionDos.reset();
@@ -79,6 +79,15 @@ export class EducacionDosComponent implements OnInit {
       this.formEducacionDos.markAllAsTouched();
     }
   }
+
+  //eliminarEducacionDos(item:EducacionDos)
+  //{
+  //  alert(item.id);
+  //  this.datosEducacionDosPorfolio.eliminarDatosEducacionDos(item.id).subscribe(data =>{
+  //    this.educacionDos.splice(this.educacionDos.indexOf(data),1);
+  //  })
+  //  }
+
 
 
   salirEducacionDos() {
