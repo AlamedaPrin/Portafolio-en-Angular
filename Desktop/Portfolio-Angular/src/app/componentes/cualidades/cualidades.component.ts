@@ -20,4 +20,6 @@ export class CualidadesComponent implements OnInit {
     
   }
 
+  
+
 }

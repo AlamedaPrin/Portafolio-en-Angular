@@ -18,19 +18,29 @@ export class ExperienciaEducacionComponent implements OnInit {
     private experienciaFormBuilder: FormBuilder
   ) {
     this.formExp = this.experienciaFormBuilder.group({
-      experiencia1: ['', [Validators.minLength(20)]],
-      experiencia2: ['', [Validators.minLength(20)]],
+      experienciaUno: [''],
+      experienciaDos: [''],
+      experienciaTres: [''],
+      experienciaCuatro: [''],
     });
   }
 
   get experiencia1() {
-    return this.formExp.get('experiencia1');
+    return this.formExp.get('experienciaUno');
   }
 
   get experiencia2() {
-    return this.formExp.get('experiencia2');
+    return this.formExp.get('experienciaDos');
+  }
+  
+  get experiencia3() {
+    return this.formExp.get('experienciaTres');
   }
 
+  get experiencia4() {
+    return this.formExp.get('experienciaCuatro');
+  }
+  
   ngOnInit(): void {
     this.datosExperienciaPorfolio
       .obtenerDatosExperiencia()
@@ -42,10 +52,14 @@ export class ExperienciaEducacionComponent implements OnInit {
 
   guardarExperiencia() {
     if (this.formExp.valid) {
-      let experiencia1 = this.formExp.controls['experiencia1'].value;
-      let experiencia2 = this.formExp.controls['experiencia2'].value;
 
-      let experienciaEditar = new Experiencia(experiencia1, experiencia2);
+      let experienciaUno = this.formExp.controls['experienciaUno'].value;
+      let experienciaDos = this.formExp.controls['experienciaDos'].value;
+      let experienciaTres = this.formExp.controls['experienciaTres'].value;
+      let experienciaCuatro = this.formExp.controls['experienciaCuatro'].value;      
+
+
+      let experienciaEditar = new Experiencia(this.miPorfolioExp.id, experienciaUno, experienciaDos, experienciaTres, experienciaCuatro);
 
       this.datosExperienciaPorfolio
         .editarDatosExperiencia(experienciaEditar)
@@ -67,12 +81,27 @@ export class ExperienciaEducacionComponent implements OnInit {
   }
 
   mostrarDatosExperiencia() {
-    this.formExp.controls['experiencia1'].setValue(
-      this.miPorfolioExp.experiencia1
-    );
-    this.formExp.controls['experiencia2'].setValue(
-      this.miPorfolioExp.experiencia2
-    );
+
+    this.formExp.controls['experienciaUno'].setValue(this.miPorfolioExp.experienciaUno);      
+    this.formExp.controls['experienciaDos'].setValue(this.miPorfolioExp.experienciaDos);        
+    this.formExp.controls['experienciaTres'].setValue(this.miPorfolioExp.experienciaTres);        
+    this.formExp.controls['experienciaCuatro'].setValue(this.miPorfolioExp.experienciaCuatro);     
+    
+  }
+
+  agregarExperiencia(){
+
+    let id = this.miPorfolioExp.experiencia
+    let experienciaUno = this.miPorfolioExp.experiencia
+    let experienciaDos = this.miPorfolioExp.experienciaDos
+    let experienciaTres = this.miPorfolioExp.experiencia
+    let experienciaCuatro = this.miPorfolioExp.experiencia
+
+    let expeNueva = new Experiencia (id, experienciaUno, experienciaDos, experienciaTres, experienciaCuatro) 
+    
+    this.datosExperienciaPorfolio.crearExperiencia(expeNueva).subscribe(data =>{
+     this.miPorfolioExp = expeNueva;
+    })
   }
 
   salirExperiencia() {

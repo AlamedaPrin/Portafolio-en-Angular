@@ -1,16 +1,17 @@
 export class Persona{
 
+    id: number;
     fullName:string;   
     position:string;
     ubication:string;
-    image:string;
+    url:string;
 
-    constructor(fullName:string, position:string, ubication:string, image:string) 
+    constructor(id: number, fullName:string, position:string, ubication:string, url:string) 
     {
-
+        this.id = id;
         this.fullName=fullName;       
         this.position=position;
         this.ubication=ubication;
-        this.image=image;
+        this.url=url;
     }
 }

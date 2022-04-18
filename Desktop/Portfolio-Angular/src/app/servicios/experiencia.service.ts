@@ -7,13 +7,22 @@ import { Experiencia } from '../Entidades/experiencia';
   providedIn: 'root',
 })
 export class ExperienciaService {
+
+  url:string="http://localhost:8080/experiencia"
+
+
   constructor(private http: HttpClient) {}
 
-  obtenerDatosExperiencia(): Observable<any> { // este método sirve para bindear los datos de este json en el componente
-    return this.http.get('./assets/data/experiencia.json');
+  obtenerDatosExperiencia(): Observable<any> {
+    return this.http.get(this.url+"/1"); // siempre trae el registro 1 de la base de datos
   }
 
   editarDatosExperiencia(experiencia: Experiencia): Observable<any> {
-    return this.http.post('http://localhost:3000/posts', experiencia);
+    return this.http.put(this.url, experiencia);
   }
+
+  crearExperiencia(experiencia: Experiencia): Observable<any> {
+    return this.http.post(this.url, experiencia);
+  }
+
 }

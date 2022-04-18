@@ -9,7 +9,7 @@ import { PorfolioService } from 'src/app/servicios/porfolio.service';
   styleUrls: ['./encabezado.component.css'],
 })
 export class EncabezadoComponent implements OnInit {
-  miPorfolioEncabezado: any;
+  miPorfolioEncabezado!: Persona;
   form: FormGroup;
   usuarioAutenticado: boolean = true; // por defecto debe estar en false
 
@@ -38,12 +38,13 @@ export class EncabezadoComponent implements OnInit {
 
   guardarEncabezado() {
     if (this.form.valid) {
-      let fullName = this.form.controls['fullName'].value;
+      
+      let fullName  = this.form.controls['fullName'].value;
       let ubication = this.form.controls['ubication'].value;
-      let position = this.form.controls['position'].value;
-      let url = this.form.controls['url'].value;
+      let position  = this.form.controls['position'].value;
+      let url       = this.form.controls['url'].value;
 
-      let personaEditar = new Persona(fullName, position, ubication, url);
+      let personaEditar = new Persona(this.miPorfolioEncabezado.id, fullName, ubication, position, url)
 
       this.datosPorfolio.editarDatosPersona(personaEditar).subscribe(
         (data) => {
@@ -63,10 +64,12 @@ export class EncabezadoComponent implements OnInit {
   }
 
   mostrarDatosEncabezado() {
+    
     this.form.controls['position'].setValue(this.miPorfolioEncabezado.position);
     this.form.controls['fullName'].setValue(this.miPorfolioEncabezado.fullName);
     this.form.controls['ubication'].setValue(this.miPorfolioEncabezado.ubication);
     this.form.controls['url'].setValue(this.miPorfolioEncabezado.url);
+    
   }
 
   eliminarEncabezado(){

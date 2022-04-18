@@ -9,8 +9,8 @@ import { EducacionService } from 'src/app/servicios/educacion.service';
   styleUrls: ['./educacion.component.css'],
 })
 export class EducacionComponent implements OnInit {
-  //Atributos
 
+  //Atributos
   miPorfolioEdu: any;
   formEducacion: FormGroup;
   usuarioAutenticadoEducacion: boolean = true; // por defecto debe estar en false
@@ -48,6 +48,7 @@ export class EducacionComponent implements OnInit {
 
   guardarEducacion() {
     if (this.formEducacion.valid) {
+      
       let descripcion1 = this.formEducacion.controls['descripcion1'].value;
       let descripcion2 = this.formEducacion.controls['descripcion2'].value;
 

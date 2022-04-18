@@ -1,0 +1,113 @@
+<section class="seccion2" id="educId">
+    <div class="edu">
+      <i class="fas fa-university fa-2x" id="univ"></i>
+      <h3 class="de">Educación</h3>
+    </div>    
+  
+  
+    <!-- Desde aca -->
+  
+    <div class="container-fluid educacion">
+      <div *ngFor="let item of educacionDos" class="row mb-2">
+        <div class="col-1">
+          <img [src]="item.img" alt="Logo escuela" class="img-fluid" id="tamanioLogoEdu">
+        </div>
+        <div class="col-9">
+
+          <h2 id="infoEdu">{{item.school}}</h2>      
+          <h4>{{item.career}}</h4>
+          <p>{{item.comienzo}} - {{item.fin}}</p>
+          
+        </div> 
+        <div class="col-2">
+          <i type="button" class="fas fa-pen" data-bs-toggle="modal" id="aver" data-bs-target="#modalEducacionDos" *ngIf="usuarioAutenticadoEducacionDos"></i>
+          <i type="button" class="fas fa-trash-alt" id="aber" *ngIf="usuarioAutenticadoEducacionDos" ></i>
+        </div> 
+      </div>
+
+      <div>
+        <i type="button" class="fa fa-plus" id="plusEdu">Agregar</i>
+      </div>
+      
+    </div>     
+  
+  <!-- Hasta aca -->
+  
+  </section>
+  
+  
+  
+  
+  <!-- Modal -->
+  
+  <div
+    class="modal fade"
+    id="modalEducacionDos"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Editar Información</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+         <form [formGroup]="formEducacionDos">
+            <div>
+
+              <label for="campoSchool" class="form-label">Institucion</label>                    
+              <input type="text" class="form-control" id="campoSchool" placeholder="Edite aquí el campo Institución" formControlName="school"/>  
+              
+              <div *ngIf="school?.invalid && school?.touched">
+                <div *ngIf="school?.errors?.['minlength']" class="text-danger">
+                
+                  El campo debe contener mínimo 5 caracteres.
+  
+                </div>
+              </div>
+                                     
+              <label for="campoCareer" class="form-label" id="estiloEduDos">Carrera</label>                     
+              <input type="text" class="form-control" id="campoCareer" placeholder="Edite aquí el campo carrera" formControlName="career"/>  
+
+              <div *ngIf="career?.invalid && career?.touched">
+                <div *ngIf="career?.errors?.['minlength']" class="text-danger">
+                
+                  El campo debe contener mínimo 10 caracteres.
+  
+                </div>
+              </div>
+              
+              <label for="campoStart" class="form-label" id="estiloEduDos">Inicio</label>                     
+              <input type="text" class="form-control" id="campoStart" placeholder="Edite aquí el campo inicio" formControlName="start"/> 
+
+              <label for="campoEnd" class="form-label" id="estiloEduDos">Finalización</label>                     
+              <input type="text" class="form-control" id="campoEnd" placeholder="Edite aquí el segundo finalización" formControlName="end"/>
+      
+             </div>           
+
+          </form> 
+
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            id="cerrarModalEduDos"
+            class="btn btn-dark"
+            data-bs-dismiss="modal"
+           (click)="salirEducacionDos"> Salir </button>
+            
+          
+          <button type="button" class="btn btn-info" (click)="guardarEducacionDos()">
+            Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

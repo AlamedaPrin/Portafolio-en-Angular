@@ -12,6 +12,7 @@ import { PorfolioService } from './servicios/porfolio.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EducacionComponent } from './componentes/educacion/educacion.component';
+import { EducacionDosComponent } from './educacion-dos/educacion-dos.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { EducacionComponent } from './componentes/educacion/educacion.component'
     ExperienciaEducacionComponent,
     CualidadesComponent,
     FooterComponent,
-    EducacionComponent
+    EducacionComponent,
+    EducacionDosComponent
   ],
   imports: [
     BrowserModule,

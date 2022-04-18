@@ -12,8 +12,14 @@
         
        
          <div>
-        <h5 id="Lorem" >{{miPorfolioExp.experiencia1}}</h5>
-        <h5 id="Lorem" >{{miPorfolioExp.experiencia2}}</h5>
+        <h5 id="Lorem" >{{miPorfolioExp.experienciaUno}}</h5>
+        <h5 id="Lorem" >{{miPorfolioExp.experienciaDos}}</h5>
+        <h5 id="Lorem" >{{miPorfolioExp.experienciaTres}}</h5>
+        <h5 id="Lorem" >{{miPorfolioExp.experienciaCuatro}}</h5>
+          </div>
+
+          <div>
+            <i type="button" class="fa fa-plus" id="plus" data-bs-toggle="modal" data-bs-target="#modalAgregarExperiencia">Agregar</i>
           </div>
 
   </section>
@@ -29,22 +35,54 @@
       <div class="modal-body">
         <form [formGroup]="formExp">
           <div class="mb-3">
-            <label for="campoExperiencia" class="form-label">Experiencia - Campo 1</label>
-            <input type="text" class="form-control" id="campoExperiencia" placeholder="Edite aquí el campo 1" formControlName="experiencia1"> 
+            <label for="campoExperiencia" class="form-label">Campo 1</label>
+            <input type="text" class="form-control" id="campoExperiencia" placeholder="Edite aquí el campo 1" formControlName="experienciaUno"> 
             <div *ngIf="experiencia1?.invalid && experiencia1?.touched">
               <div *ngIf="experiencia1?.errors?.['minlength']" class="text-danger">
                 El campo debe contener mínimo 20 caracteres.
                 </div>
              </div> 
              
-             <label for="campoExperiencia" class="form-label">Experiencia - Campo 2</label>
-             <input type="text" class="form-control" id="campoExperiencia" placeholder="Edite aquí el campo 2" formControlName="experiencia2"> 
+             <label for="campoExperiencia" class="form-label">Campo 2</label>
+             <input type="text" class="form-control" id="campoExperiencia" placeholder="Edite aquí el campo 2" formControlName="experienciaDos">
+             <label for="campoExperiencia" class="form-label">Campo 3</label>
+             <input type="text" class="form-control" id="campoExperiencia" placeholder="Edite aquí el campo 2" formControlName="experienciaTres">
+             <label for="campoExperiencia" class="form-label">Campo 4</label>
+             <input type="text" class="form-control" id="campoExperiencia" placeholder="Edite aquí el campo 2" formControlName="experienciaCuatro"> 
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" id="cerrarModalExp" class="btn btn-dark" data-bs-dismiss="modal" (click)="salirExperiencia()">Salir</button>
-        <button type="button" class="btn btn-info" (click)="guardarExperiencia()">Guardar</button>
+        <button type="button" id="cerrarModalExp" class="btn btn-info" (click)="guardarExperiencia()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Agregar-->
+<div class="modal fade" id="modalAgregarExperiencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Información</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          
+            <div class="mb-3">
+
+            <label for="campoAcercaDe" class="form-label">Experiencia</label>
+            <input type="text" class="form-control" id="campoAcercaDe" placeholder="Agregue aquí su experiencia">
+            
+            </div>                      
+        
+        </form>
+      </div>
+      <div class="modal-footer">        
+        <button type="button" id="cerrarModalAcerca" class="btn btn-dark" data-bs-dismiss="modal" (click)="salirExperiencia()">Salir</button>
+        <button type="button" class="btn btn-info" (click)="agregarExperiencia()">Guardar</button>
       </div>
     </div>
   </div>

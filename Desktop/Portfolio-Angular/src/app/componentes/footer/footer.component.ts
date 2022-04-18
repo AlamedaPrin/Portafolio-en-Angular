@@ -9,38 +9,39 @@ import { ProyectosService } from 'src/app/servicios/proyectos.service'; // Impor
   styleUrls: ['./footer.component.css'],
 })
 export class FooterComponent implements OnInit {
-  //Atributos
-  miPorfolioProyecto: any;
+  
+  miPorfolioProyecto!: Proyecto;
   formProyecto: FormGroup;
   usuarioAutenticadoProyecto: boolean = true; // por defecto debe estar en false
 
-  //Contructor de clase
+  
   constructor(
     private datosProyectos: ProyectosService,
     private proyectosFormBuilder: FormBuilder
   ) {
     this.formProyecto = this.proyectosFormBuilder.group({
-      Proyectos: ['', [Validators.minLength(20)]],
+      Proyectos: [''],  //1
     });
   }
 
-  //Getter
-  get Proyectos() {
-    return this.formProyecto.get('Proyectos');
+  
+  get Proyectos() {   //2
+    return this.formProyecto.get('Proyectos'); //3
   }
 
   ngOnInit(): void {
     this.datosProyectos.obtenerDatosProyectos().subscribe((data) => {
       console.log(data);
-      this.miPorfolioProyecto = data;
+      this.miPorfolioProyecto=data;
     });
   }
 
   guardarProyecto() {
     if (this.formProyecto.valid) {
-      let Proyectos = this.formProyecto.controls['Proyectos'].value;
 
-      let proyectoEditar = new Proyecto(Proyectos);
+      let Proyectos = this.formProyecto.controls['Proyectos'].value;   //4
+
+      let proyectoEditar = new Proyecto(this.miPorfolioProyecto.id, Proyectos); //5
 
       this.datosProyectos.editarDatosProyectos(proyectoEditar).subscribe(
         (data) => {
@@ -65,9 +66,9 @@ export class FooterComponent implements OnInit {
   }
 
   mostrarDatosProyecto() {
-    this.formProyecto.controls['Proyectos'].setValue(
-      this.miPorfolioProyecto.Proyectos
-    );
+
+    this.formProyecto.controls['proyecto'].setValue(this.miPorfolioProyecto.proyecto);      
+    
   }
 
   eliminarProyectos() {

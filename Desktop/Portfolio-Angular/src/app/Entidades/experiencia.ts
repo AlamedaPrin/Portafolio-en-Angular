@@ -1,13 +1,19 @@
 export class Experiencia {
 
-    experiencia1:string;
-    experiencia2:string;      
+    id: number;
+    experienciaUno:string;
+    experienciaDos:string; 
+    experienciaTres:string;
+    experienciaCuatro:string;     
   
-    constructor(experiencia1:string, experiencia2:string) 
+    constructor(id:number, experienciaUno:string, experienciaDos:string, experienciaTres:string, experienciaCuatro:string) 
 
     {
-        this.experiencia1 = experiencia1;
-        this.experiencia2 = experiencia2;    
+        this.id = id;
+        this.experienciaUno = experienciaUno;
+        this.experienciaDos = experienciaDos; 
+        this.experienciaTres = experienciaTres; 
+        this.experienciaCuatro = experienciaCuatro;    
         
     }
 }

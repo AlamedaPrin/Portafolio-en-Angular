@@ -1,11 +1,8 @@
-export class Acerca {
-
-    AcercaDe:string;   
-  
-    constructor(AcercaDe:string) 
-
-    {
-        this.AcercaDe=AcercaDe;    
-        
+export class AcercaDe {
+    
+    acerca: string;     
+    constructor (acerca: string) {  
+         
+        this.acerca=acerca;           
     }
 }

@@ -1,7 +1,8 @@
 export class Proyecto {
-  Proyectos: string;
-
-  constructor(Proyectos: string) {
-    this.Proyectos = Proyectos;
+  id: number;
+  proyecto: string;
+  constructor(id:number, proyecto: string) {
+    this.id = id;
+    this.proyecto = proyecto;
   }
 }
