@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Educacion } from '../Entidades/educacion';
 import { EducacionDos } from '../Entidades/educacionDos';
 import { EducacionDosService } from '../servicios/educacion-dos.service';
 

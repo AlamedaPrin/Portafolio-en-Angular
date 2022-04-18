@@ -49,7 +49,9 @@ export class AcercaDeComponent implements OnInit {
       document.getElementById('cerrarModalAgregarAcerca')?.click();      
     })
   }
-  }     
+  }    
+  
+  crearAcercaDe(){}
 
 
   eliminarAcercaDe(){}   
