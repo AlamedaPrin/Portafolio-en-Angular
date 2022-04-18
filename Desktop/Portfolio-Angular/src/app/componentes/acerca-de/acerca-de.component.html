@@ -18,7 +18,7 @@
     </div>
 
     <div>
-      <i type="button" class="fa fa-plus" id="plus" (click)="agregarAcerca()">Agregar</i>
+      <i type="button" class="fa fa-plus" data-bs-toggle="modal" data-bs-target="#modalAgregarAcercaDe" id="plus" (click)="agregarAcercaDe()">Agregar</i>
     </div>
 
          
@@ -30,7 +30,7 @@
 
 
 
-<!-- Modal -->
+<!-- Modal Editar-->
 <div class="modal fade" id="modalAcercaDe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -40,13 +40,13 @@
       </div>
       <div class="modal-body">
         <form [formGroup]="formAcerca">
-          <div class="mb-3">
+          
+            <div class="mb-3">
 
             <label for="campoAcercaDe" class="form-label">Acerca De</label>
             <input type="text" class="form-control" id="campoAcercaDe" placeholder="Edite aquí el campo 'Acerca De'" formControlName="acercaDe">
             
-              </div> 
-                      
+            </div>                      
         
         </form>
       </div>
@@ -57,3 +57,33 @@
     </div>
   </div>
 </div>
+
+<!-- Modal Agregar-->
+<div class="modal fade" id="modalAgregarAcercaDe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Información</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formAgregarAcerca">
+          
+            <div class="mb-3">
+
+            <label for="campoAcercaDe" class="form-label">Acerca De</label>
+            <input type="text" class="form-control" id="campoAcercaDe" placeholder="Agregue aquí su información" formControlName="acerc">
+            
+            </div>                      
+        
+        </form >
+      </div>
+      <div class="modal-footer">        
+        <button type="button" id="cerrarModalAgregarAcerca" class="btn btn-dark" data-bs-dismiss="modal" (click)="salirAcercaDe()">Salir</button>
+        <button type="button" class="btn btn-info" (click)="agregarAcercaDe()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

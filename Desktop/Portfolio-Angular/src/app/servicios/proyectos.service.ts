@@ -20,5 +20,9 @@ export class ProyectosService {
   return this.http.put(this.url, proyecto)
  }
 
+ crearProyecto(proyecto:Proyecto):Observable<any> {
+   return this.http.post(this.url, proyecto);
+ }
+
 }
  

@@ -19,4 +19,16 @@ export class AcercaService {
   editarDatosAcerca(acerca: AcercaDe): Observable<any> {
     return this.http.put(this.url, acerca);
   }
+
+  crearAcercaDe(acerca: AcercaDe): Observable<AcercaDe> {
+    return this.http.post<AcercaDe>(this.url, acerca);
+  }
+
+  eliminarAcercaDe(): Observable<AcercaDe> {
+   return this.http.delete<AcercaDe>(this.url+"/1")
+  }
+
+
 }
+
+

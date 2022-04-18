@@ -89,6 +89,21 @@ export class ExperienciaEducacionComponent implements OnInit {
     
   }
 
+  agregarExperiencia(){
+
+    let id = this.miPorfolioExp.experiencia
+    let experienciaUno = this.miPorfolioExp.experiencia
+    let experienciaDos = this.miPorfolioExp.experienciaDos
+    let experienciaTres = this.miPorfolioExp.experiencia
+    let experienciaCuatro = this.miPorfolioExp.experiencia
+
+    let expeNueva = new Experiencia (id, experienciaUno, experienciaDos, experienciaTres, experienciaCuatro) 
+    
+    this.datosExperienciaPorfolio.crearExperiencia(expeNueva).subscribe(data =>{
+     this.miPorfolioExp = expeNueva;
+    })
+  }
+
   salirExperiencia() {
     this.formExp.reset();
   }

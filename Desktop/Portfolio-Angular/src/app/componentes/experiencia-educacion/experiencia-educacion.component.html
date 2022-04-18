@@ -19,7 +19,7 @@
           </div>
 
           <div>
-            <i type="button" class="fa fa-plus" id="plus">Agregar</i>
+            <i type="button" class="fa fa-plus" id="plus" data-bs-toggle="modal" data-bs-target="#modalAgregarExperiencia">Agregar</i>
           </div>
 
   </section>
@@ -55,6 +55,34 @@
       <div class="modal-footer">
         <button type="button" id="cerrarModalExp" class="btn btn-dark" data-bs-dismiss="modal" (click)="salirExperiencia()">Salir</button>
         <button type="button" id="cerrarModalExp" class="btn btn-info" (click)="guardarExperiencia()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Agregar-->
+<div class="modal fade" id="modalAgregarExperiencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Información</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          
+            <div class="mb-3">
+
+            <label for="campoAcercaDe" class="form-label">Experiencia</label>
+            <input type="text" class="form-control" id="campoAcercaDe" placeholder="Agregue aquí su experiencia">
+            
+            </div>                      
+        
+        </form>
+      </div>
+      <div class="modal-footer">        
+        <button type="button" id="cerrarModalAcerca" class="btn btn-dark" data-bs-dismiss="modal" (click)="salirExperiencia()">Salir</button>
+        <button type="button" class="btn btn-info" (click)="agregarExperiencia()">Guardar</button>
       </div>
     </div>
   </div>

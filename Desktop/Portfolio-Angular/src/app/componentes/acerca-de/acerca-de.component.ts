@@ -11,6 +11,7 @@ import { AcercaService } from 'src/app/servicios/acerca.service';
 export class AcercaDeComponent implements OnInit {
   miPorfolioAcerca!: AcercaDe;
   formAcerca: FormGroup;
+  formAgregarAcerca: FormGroup;
   usuarioAutenticadoAcerca: boolean = true; // Se muestran los botones. Por defecto debe estar en false
 
   constructor(
@@ -18,8 +19,11 @@ export class AcercaDeComponent implements OnInit {
     private acercaFormBuilder: FormBuilder
   ) {
     this.formAcerca = this.acercaFormBuilder.group({
-      acercaDe: [''],
+      acercaDe: [''],      
     });
+    this.formAgregarAcerca = this.acercaFormBuilder.group({
+      acerc: [''],
+    })
   }
 
   get acercaDe() {
@@ -32,6 +36,24 @@ export class AcercaDeComponent implements OnInit {
       this.miPorfolioAcerca = data;
     });
   }
+
+  agregarAcercaDe() { 
+    if (this.formAgregarAcerca.valid) {
+
+    let agregarAcer = this.formAgregarAcerca.controls['acerc'].value;
+
+    let acercaNuevo = new AcercaDe (agregarAcer); 
+
+    this.datosAcercaPorfolio.crearAcercaDe(acercaNuevo).subscribe(data => {
+      this.miPorfolioAcerca = acercaNuevo;      
+      document.getElementById('cerrarModalAgregarAcerca')?.click();      
+    })
+  }
+  }     
+
+
+  eliminarAcercaDe(){}   
+     
 
   guardarAcercaDe() {
     if (this.formAcerca.valid) {
@@ -63,20 +85,19 @@ export class AcercaDeComponent implements OnInit {
 
   mostrarDatosAcerca() {
     this.formAcerca.controls['acercaDe'].setValue(this.miPorfolioAcerca.acerca);
-      
-    
+          
   }
+
+  mostrarDatosAgregarAcerca(){
+    this.formAgregarAcerca.controls['acerc'].setValue(this.miPorfolioAcerca.acerca);
+  }
+  
 
   eliminarAcerca() {
     document.getElementById('campoAcerca')?.remove();
   }
 
-  
-
-  agregarAcerca() {   
-
     
-  }
 
   
 }
