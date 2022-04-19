@@ -20,7 +20,7 @@
           
         </div> 
         <div class="col-2">
-          <i type="button" class="fas fa-pen" data-bs-toggle="modal" id="aver" data-bs-target="#modalEducacionDos" *ngIf="usuarioAutenticadoEducacionDos"></i>
+          <i type="button" class="fas fa-pen" data-bs-toggle="modal" id="aver" data-bs-target="#modalEducacionDos" *ngIf="usuarioAutenticadoEducacionDos" (click)="editarDatosEducacionDos(item)"></i>
           <i type="button" class="fas fa-trash-alt" id="aber" *ngIf="usuarioAutenticadoEducacionDos" ></i>
         </div> 
       </div>

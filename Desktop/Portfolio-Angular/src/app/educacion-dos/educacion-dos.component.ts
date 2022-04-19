@@ -11,9 +11,10 @@ import { EducacionDosService } from '../servicios/educacion-dos.service';
 })
 export class EducacionDosComponent implements OnInit {
 
-  educacionDos:any;
+  educacionDos!:EducacionDos[];
   formEducacionDos:FormGroup;
   usuarioAutenticadoEducacionDos: boolean = true; // por defecto debe estar en false
+  educacionEdit!: EducacionDos;
 
   constructor(private datosEducacionDosPorfolio:EducacionDosService, private educacionDosFormBuilder: FormBuilder) { 
     this.formEducacionDos = this.educacionDosFormBuilder.group({
@@ -51,6 +52,10 @@ export class EducacionDosComponent implements OnInit {
 
   // Métodos
 
+  editarDatosEducacionDos(item: EducacionDos) {
+    this.educacionEdit=item;    
+  }
+
   guardarEducacionDos() {
 
     if (this.formEducacionDos.valid) {
@@ -63,10 +68,10 @@ export class EducacionDosComponent implements OnInit {
       let fin     =  this.formEducacionDos.controls['fin'].value;
       let idPersona =  this.formEducacionDos.controls['idPersona'].value;
 
-      let educacionDosEditar = new EducacionDos(this.educacionDos.id, school, career, img, comienzo, fin, idPersona);
+      let educacionDosEditar = new EducacionDos(this.educacionEdit.id, school, career, img, comienzo, fin, idPersona);
  
       this.datosEducacionDosPorfolio.editarDatosEducacionDos(educacionDosEditar).subscribe((data) => {
-        this.educacionDos = educacionDosEditar;
+       //this.educacionDos.filter(this.educacionEdit => this.educacionEdit.id == educacionDosEditar.id); 
         this.formEducacionDos.reset();
         document.getElementById('cerrarModalEduDos')?.click();
       },

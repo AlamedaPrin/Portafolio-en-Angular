@@ -16,12 +16,16 @@ export class EducacionDosService {
     return this.http.get<EducacionDos[]>(this.url);
   } 
 
-  editarDatosEducacionDos(educacionDos: EducacionDos): Observable<any> {
-    return this.http.post('http://localhost:3000/posts', educacionDos);
+  editarDatosEducacionDos(educacionDos:any):Observable<any> {
+    return this.http.put(this.url + "/",educacionDos);
   }
 
   eliminarDatosEducacionDos(id: number): Observable<any>{
     return this.http.delete(this.url+"/"+id)
+  }
+
+  crearEducacionDos(educacion: any): Observable<any>{
+    return this.http.post(this.url, educacion)
   }
 
 }

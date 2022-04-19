@@ -42,7 +42,7 @@ export class AcercaDeComponent implements OnInit {
 
     let agregarAcer = this.formAgregarAcerca.controls['acerc'].value;
 
-    let acercaNuevo = new AcercaDe (agregarAcer); 
+    let acercaNuevo = new AcercaDe (this.miPorfolioAcerca.id, agregarAcer); 
 
     this.datosAcercaPorfolio.crearAcercaDe(acercaNuevo).subscribe(data => {
       this.miPorfolioAcerca = acercaNuevo;      
@@ -62,7 +62,7 @@ export class AcercaDeComponent implements OnInit {
       
       let acercaDe = this.formAcerca.controls['acercaDe'].value;
 
-      let acercaEditar = new AcercaDe (acercaDe);
+      let acercaEditar = new AcercaDe (this.miPorfolioAcerca.id,acercaDe);
 
       this.datosAcercaPorfolio.editarDatosAcerca(acercaEditar).subscribe(
         (data) => {

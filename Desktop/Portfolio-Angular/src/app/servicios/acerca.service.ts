@@ -24,8 +24,8 @@ export class AcercaService {
     return this.http.post<AcercaDe>(this.url, acerca);
   }
 
-  eliminarAcercaDe(): Observable<AcercaDe> {
-   return this.http.delete<AcercaDe>(this.url+"/1")
+  eliminarAcercaDe(id:number): Observable<AcercaDe> {
+   return this.http.delete<AcercaDe>(this.url+"/"+id)
   }
 
 

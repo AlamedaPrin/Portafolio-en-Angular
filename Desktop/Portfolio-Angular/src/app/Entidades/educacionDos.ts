@@ -1,12 +1,12 @@
 export class EducacionDos {
 
     id: number;
-   school: string;
-   career: string;
-   img: string;
-   comienzo:string;
-   fin:string;
-   idPersona: number;
+    school: string;
+    career: string;
+    img: string;
+    comienzo:string;
+    fin:string;
+    idPersona: number;
 
    constructor(id: number, school:string,career:string, img:string, comienzo:string, fin:string, idPersona:number)
 
