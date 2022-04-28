@@ -7,16 +7,19 @@
 
         </div>
 
-        <i *ngIf="usuarioAutenticadoExperiencia" type="button" class="fas fa-pen" id="aver" data-bs-toggle="modal" data-bs-target="#modalExperiencia" (click)="mostrarDatosExperiencia()"></i>               
-        <i *ngIf="usuarioAutenticadoExperiencia" type="button" class="fas fa-trash-alt" id="aber" (click)="eliminarExperiencia()"></i>
+        <i *ngIf="usuarioAutenticado" type="button" class="fas fa-pen" id="aver" data-bs-toggle="modal" data-bs-target="#modalExperiencia" (click)="mostrarDatosExperiencia()"></i>               
+        <i *ngIf="usuarioAutenticado" type="button" class="fas fa-trash-alt" id="aber" (click)="eliminarExperiencia()"></i>
         
-       
-         <div>
-        <h5 id="Lorem" >{{miPorfolioExp.experienciaUno}}</h5>
-        <h5 id="Lorem" >{{miPorfolioExp.experienciaDos}}</h5>
-        <h5 id="Lorem" >{{miPorfolioExp.experienciaTres}}</h5>
+        
+         <div class="col-3">
+        <h5 id="algo" >{{miPorfolioExp.experienciaUno}}</h5>           
+        <h5 id="Lorem" >{{miPorfolioExp.experienciaDos}}</h5>        
+        <h5 id="Lorem" >{{miPorfolioExp.experienciaTres}}</h5>        
         <h5 id="Lorem" >{{miPorfolioExp.experienciaCuatro}}</h5>
-          </div>
+        
+          </div>  
+
+          
 
           <div>
             <i type="button" class="fa fa-plus" id="plus" data-bs-toggle="modal" data-bs-target="#modalAgregarExperiencia">Agregar</i>

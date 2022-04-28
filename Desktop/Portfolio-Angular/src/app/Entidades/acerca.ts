@@ -1,8 +1,13 @@
 export class AcercaDe {
-    id: number;
-    acerca: string;     
-    constructor (id: number, acerca: string) {  
-         this.id = id;
-        this.acerca=acerca;           
+
+    id: any;
+    acerca: string;   
+    idPersona: number;  
+
+    constructor (id: any, acerca: string, idPersona: number) {  
+
+        this.id = id;
+        this.acerca=acerca; 
+        this.idPersona=idPersona;          
     }
 }

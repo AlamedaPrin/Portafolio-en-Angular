@@ -5,7 +5,7 @@
   </div>
 
   <i
-    *ngIf="usuarioAutenticadoEducacion"
+    *ngIf="isUserLogged"
     type="button"
     class="fas fa-pen"
     id="aver"
@@ -14,7 +14,7 @@
     (click)="mostrarDatosEducacion()"
   ></i>
   <i
-    *ngIf="usuarioAutenticadoEducacion"
+    *ngIf="isUserLogged"
     type="button"
     class="fas fa-trash-alt"
     id="aber"

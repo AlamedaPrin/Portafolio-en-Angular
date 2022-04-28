@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CualidadesComponent implements OnInit {
 
-  usuarioAutenticadoCualidades:boolean = true; // por defecto debe estar en false
+  usuarioAutenticado:boolean = true; // por defecto debe estar en false
 
   constructor() { }
 
