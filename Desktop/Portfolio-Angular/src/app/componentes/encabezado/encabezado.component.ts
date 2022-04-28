@@ -21,7 +21,7 @@ export class EncabezadoComponent implements OnInit {
       fullName: ['', [Validators.required, Validators.minLength(5)]],
       position: ['', [Validators.required]],
       ubication: ['', [Validators.required]],
-      url: ['https://'],
+      url: ['https://', [Validators.required]],
     });
   }
 
@@ -75,4 +75,6 @@ export class EncabezadoComponent implements OnInit {
   eliminarEncabezado(){
     document.getElementById('encabId')?.remove();
   }
+
+  
 }

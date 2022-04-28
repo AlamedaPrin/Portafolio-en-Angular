@@ -12,16 +12,16 @@ export class ProyectosService {
 
   url:string = "http://localhost:8080/proyecto";
 
-  obtenerDatosProyectos(): Observable<Proyecto> {
+  obtenerDatosProyectos(): Observable<Proyecto> {               //funciona
     return this.http.get<Proyecto>(this.url+"/1");
   };
 
-  editarDatosProyectos(proyecto:Proyecto):Observable<any> {
-  return this.http.put(this.url, proyecto)
+  editarDatosProyectos(proyecto:Proyecto):Observable<Proyecto> { //funciona
+  return this.http.put<Proyecto>(this.url, proyecto)
  }
 
- crearProyecto(proyecto:Proyecto):Observable<any> {
-   return this.http.post(this.url, proyecto);
+ crearProyecto(proyecto:Proyecto):Observable<Proyecto> {
+   return this.http.post<Proyecto>(this.url, proyecto);
  }
 
  eliminarProyecto(id: number): Observable<any> {

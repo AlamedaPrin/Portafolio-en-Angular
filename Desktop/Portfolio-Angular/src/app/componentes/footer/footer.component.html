@@ -4,14 +4,14 @@
       <h3 class="de">Proyectos</h3>
     </div>
 
-       <i *ngIf="usuarioAutenticadoProyecto" type="button" class="fas fa-pen" id="aver" data-bs-toggle="modal" data-bs-target="#modalProyecto" (click)="mostrarDatosProyecto()"></i>               
-       <i *ngIf="usuarioAutenticadoProyecto" type="button" class="fas fa-trash-alt" id="aber" (click)="eliminarProyectos()"></i>
+       <i *ngIf="usuarioAutenticado" type="button" class="fas fa-pen" id="aver" data-bs-toggle="modal" data-bs-target="#modalProyecto" (click)="mostrarDatosProyecto()"></i>               
+       <i *ngIf="usuarioAutenticado" type="button" class="fas fa-trash-alt" id="aber" (click)="eliminarProyectos()"></i>
     <div>
       <h5 id="Lorem">{{miPorfolioProyecto.proyecto}}</h5>
     </div>
 
     <div>
-      <i type="button" class="fa fa-plus" id="plus" data-bs-toggle="modal" data-bs-target="#modalAgregarProyecto">Agregar</i>
+      <i type="button" class="fa fa-plus" id="plus" data-bs-toggle="modal" data-bs-target="#modalAgregarProyecto" (click)="agregarProyecto()">Agregar</i>
     </div>
     
   </footer>  

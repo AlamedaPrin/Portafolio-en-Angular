@@ -13,7 +13,7 @@ export class EducacionComponent implements OnInit {
   //Atributos
   miPorfolioEdu: any;
   formEducacion: FormGroup;
-  usuarioAutenticadoEducacion: boolean = true; // por defecto debe estar en false
+  isUserLogged: boolean = true; // por defecto debe estar en false
 
   //constructor de clase
 

@@ -10,20 +10,18 @@ import { ProyectosService } from 'src/app/servicios/proyectos.service'; // Impor
 })
 export class FooterComponent implements OnInit {
   
-  miPorfolioProyecto!: Proyecto;
+  miPorfolioProyecto!: any;
   formProyecto: FormGroup;
-  usuarioAutenticadoProyecto: boolean = true; // por defecto debe estar en false
+  usuarioAutenticado: boolean = true; // por defecto debe estar en false
 
   
-  constructor(
-    private datosProyectos: ProyectosService,
-    private proyectosFormBuilder: FormBuilder
-  ) {
+  constructor(private datosProyectos: ProyectosService,private proyectosFormBuilder: FormBuilder)  
+    
+   {
     this.formProyecto = this.proyectosFormBuilder.group({
       Proyectos: [''],  //1
     });
   }
-
   
   get Proyectos() {   //2
     return this.formProyecto.get('Proyectos'); //3
@@ -41,7 +39,7 @@ export class FooterComponent implements OnInit {
 
       let Proyectos = this.formProyecto.controls['Proyectos'].value;   //4
 
-      let proyectoEditar = new Proyecto(this.miPorfolioProyecto.id, Proyectos); //5
+      let proyectoEditar = new Proyecto(this.miPorfolioProyecto.id, Proyectos, this.miPorfolioProyecto.idPersona); //5
 
       this.datosProyectos.editarDatosProyectos(proyectoEditar).subscribe(
         (data) => {
@@ -61,14 +59,21 @@ export class FooterComponent implements OnInit {
     }
   }
 
+  agregarProyecto(){    
+
+    let proyNuevo = new Proyecto (this.miPorfolioProyecto.id, this.miPorfolioProyecto.proyecto, this.miPorfolioProyecto.idPersona)
+
+    this.datosProyectos.crearProyecto(proyNuevo).subscribe(data => {
+      this.miPorfolioProyecto = proyNuevo;
+    })
+  }
+
   salirProyecto() {
     this.formProyecto.reset();
   }
 
   mostrarDatosProyecto() {
-
-    this.formProyecto.controls['proyecto'].setValue(this.miPorfolioProyecto.proyecto);      
-    
+    this.formProyecto.controls['proyecto'].setValue(this.miPorfolioProyecto.proyecto);          
   }
 
   eliminarProyectos() {

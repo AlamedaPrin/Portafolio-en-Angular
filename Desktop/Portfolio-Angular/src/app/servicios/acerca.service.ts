@@ -20,12 +20,12 @@ export class AcercaService {
     return this.http.put(this.url, acerca);
   }
 
-  crearAcercaDe(acerca: AcercaDe): Observable<AcercaDe> {
-    return this.http.post<AcercaDe>(this.url, acerca);
+  crearAcercaDe(acerca: AcercaDe): Observable<any> {
+    return this.http.post(this.url, acerca);
   }
 
-  eliminarAcercaDe(id:number): Observable<AcercaDe> {
-   return this.http.delete<AcercaDe>(this.url+"/"+id)
+  eliminarAcercaDe(id:number): Observable<any> {
+   return this.http.delete(this.url+"/"+id)
   }
 
 

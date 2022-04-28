@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Educacion } from '../Entidades/educacion';
 import { EducacionDos } from '../Entidades/educacionDos';
+
 import { EducacionDosService } from '../servicios/educacion-dos.service';
 
 @Component({
@@ -13,10 +13,11 @@ export class EducacionDosComponent implements OnInit {
 
   educacionDos!:EducacionDos[];
   formEducacionDos:FormGroup;
-  usuarioAutenticadoEducacionDos: boolean = true; // por defecto debe estar en false
+  accion = 'Agregar';
+  usuarioAutenticado: boolean = true; // por defecto debe estar en false
   educacionEdit!: EducacionDos;
 
-  constructor(private datosEducacionDosPorfolio:EducacionDosService, private educacionDosFormBuilder: FormBuilder) { 
+  constructor(private datosEducacionDosPorfolio:EducacionDosService, private educacionDosFormBuilder: FormBuilder ) { 
     this.formEducacionDos = this.educacionDosFormBuilder.group({
       school: ['', [Validators.minLength(5)]],
       career: ['', [Validators.minLength(10)]],
@@ -53,7 +54,8 @@ export class EducacionDosComponent implements OnInit {
   // Métodos
 
   editarDatosEducacionDos(item: EducacionDos) {
-    this.educacionEdit=item;    
+    this.educacionEdit=item;   
+     
   }
 
   guardarEducacionDos() {
@@ -71,8 +73,9 @@ export class EducacionDosComponent implements OnInit {
       let educacionDosEditar = new EducacionDos(this.educacionEdit.id, school, career, img, comienzo, fin, idPersona);
  
       this.datosEducacionDosPorfolio.editarDatosEducacionDos(educacionDosEditar).subscribe((data) => {
-       //this.educacionDos.filter(this.educacionEdit => this.educacionEdit.id == educacionDosEditar.id); 
+       //this.educacionDos.(this.educacionEdit => this.educacionEdit.id == educacionDosEditar.id); 
         this.formEducacionDos.reset();
+        
         document.getElementById('cerrarModalEduDos')?.click();
       },
       (error) => {

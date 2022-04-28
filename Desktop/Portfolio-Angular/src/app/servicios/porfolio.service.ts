@@ -19,4 +19,8 @@ export class PorfolioService {
   editarDatosPersona(persona: Persona): Observable<any> {
     return this.http.put(this.url, persona);
   }
+
+  crearPersona(persona: Persona): Observable<Persona> {
+    return this.http.post<Persona>(this.url, persona)
+  }
 }

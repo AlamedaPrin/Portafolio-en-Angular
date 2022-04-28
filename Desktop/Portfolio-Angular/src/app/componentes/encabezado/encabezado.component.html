@@ -45,8 +45,7 @@
   <div class="info" id="encabId">    
     <h3 id="nom">{{miPorfolioEncabezado.fullName}}</h3>
     <i *ngIf="usuarioAutenticado" type="button" class="fas fa-user-edit fa-lg" id="icon"
-      data-bs-toggle="modal" data-bs-target="#modalEncabezado" (click)="mostrarDatosEncabezado()"></i>
-      <i *ngIf="usuarioAutenticado" type="button" class="fas fa-trash-alt" id="icon" (click)="eliminarEncabezado()"></i>
+      data-bs-toggle="modal" data-bs-target="#modalEncabezado" (click)="mostrarDatosEncabezado()"></i>      
       </div> 
       
   
@@ -54,6 +53,7 @@
     <h5 class="stack"> {{miPorfolioEncabezado.position}} </h5>
     <h5 class="stack"> {{miPorfolioEncabezado.ubication}} </h5>
   </div>
+  
 
 
 </header>

@@ -8,9 +8,9 @@
     </div>
 
             <!-- botones de edición -->
-        <i *ngIf="usuarioAutenticadoAcerca" type="button" class="fas fa-pen" id="aver" data-bs-toggle="modal"
+        <i *ngIf="usuarioAutenticado" type="button" class="fas fa-pen" id="aver" data-bs-toggle="modal"
           data-bs-target="#modalAcercaDe" (click)="mostrarDatosAcerca()"></i>
-        <i *ngIf="usuarioAutenticadoAcerca" type="button" class="fas fa-trash-alt" id="aber" (click)="eliminarAcerca()"></i>        
+        <i *ngIf="usuarioAutenticado" type="button" class="fas fa-trash-alt" id="aber" (click)="eliminarAcerca()"></i>        
             <!------------------------>
 
     <div id="campoAcerca">
@@ -18,7 +18,7 @@
     </div>
 
     <div>
-      <i type="button" class="fa fa-plus" data-bs-toggle="modal" data-bs-target="#modalAgregarAcercaDe" id="plus" (click)="agregarAcercaDe()">Agregar</i>
+      <i type="button" class="fa fa-plus" data-bs-toggle="modal" data-bs-target="#modalAgregarAcercaDe" id="plus">Agregar</i>
     </div>
 
          

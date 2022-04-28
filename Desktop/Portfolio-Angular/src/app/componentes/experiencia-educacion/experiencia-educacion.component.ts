@@ -9,14 +9,14 @@ import { ExperienciaService } from 'src/app/servicios/experiencia.service'; // e
   styleUrls: ['./experiencia-educacion.component.css'],
 })
 export class ExperienciaEducacionComponent implements OnInit {
+
   miPorfolioExp: any;
   formExp: FormGroup;
-  usuarioAutenticadoExperiencia: boolean = true; // por defecto debe estar en false
+  usuarioAutenticado: boolean = true; // por defecto debe estar en false
 
-  constructor(
-    private datosExperienciaPorfolio: ExperienciaService,
-    private experienciaFormBuilder: FormBuilder
-  ) {
+  constructor(private datosExperienciaPorfolio: ExperienciaService,private experienciaFormBuilder: FormBuilder)   
+    
+   {
     this.formExp = this.experienciaFormBuilder.group({
       experienciaUno: [''],
       experienciaDos: [''],
@@ -41,13 +41,11 @@ export class ExperienciaEducacionComponent implements OnInit {
     return this.formExp.get('experienciaCuatro');
   }
   
-  ngOnInit(): void {
-    this.datosExperienciaPorfolio
-      .obtenerDatosExperiencia()
-      .subscribe((data) => {
-        console.log(data);
-        this.miPorfolioExp = data;
-      });
+  ngOnInit(): void {this.datosExperienciaPorfolio.obtenerDatosExperiencia().subscribe((data) => {
+    console.log(data);
+    this.miPorfolioExp = data;
+  });   
+      
   }
 
   guardarExperiencia() {
@@ -59,7 +57,7 @@ export class ExperienciaEducacionComponent implements OnInit {
       let experienciaCuatro = this.formExp.controls['experienciaCuatro'].value;      
 
 
-      let experienciaEditar = new Experiencia(this.miPorfolioExp.id, experienciaUno, experienciaDos, experienciaTres, experienciaCuatro);
+      let experienciaEditar = new Experiencia(this.miPorfolioExp.id, experienciaUno, experienciaDos, experienciaTres, experienciaCuatro, this.miPorfolioExp.idPersona);
 
       this.datosExperienciaPorfolio
         .editarDatosExperiencia(experienciaEditar)
@@ -91,17 +89,17 @@ export class ExperienciaEducacionComponent implements OnInit {
 
   agregarExperiencia(){
 
-    let id = this.miPorfolioExp.experiencia
-    let experienciaUno = this.miPorfolioExp.experiencia
+    let id = this.miPorfolioExp.experiencia // Esto está haciendo que se cree otro registro en bd
+    let experienciaUno = this.miPorfolioExp.experienciaUno
     let experienciaDos = this.miPorfolioExp.experienciaDos
-    let experienciaTres = this.miPorfolioExp.experiencia
-    let experienciaCuatro = this.miPorfolioExp.experiencia
+    let experienciaTres = this.miPorfolioExp.experienciaTres
+    let experienciaCuatro = this.miPorfolioExp.experienciaCuatro
 
-    let expeNueva = new Experiencia (id, experienciaUno, experienciaDos, experienciaTres, experienciaCuatro) 
+    let expeNueva = new Experiencia (id, experienciaUno, experienciaDos, experienciaTres, experienciaCuatro, this.miPorfolioExp.idPersona) 
     
-    this.datosExperienciaPorfolio.crearExperiencia(expeNueva).subscribe(data =>{
+   // this.datosExperienciaPorfolio.crearExperiencia(expeNueva).subscribe(data =>{
      this.miPorfolioExp = expeNueva;
-    })
+  //  })
   }
 
   salirExperiencia() {
@@ -109,6 +107,17 @@ export class ExperienciaEducacionComponent implements OnInit {
   }
 
   eliminarExperiencia() {
-    document.getElementById('experId')?.remove();
+    document.getElementById('algo')?.remove();
   }
+
+
+ // sumarExperiencia(item:Experiencia){
+ //   alert(item.id)
+ //   this.datosExperienciaPorfolio.crearExperiencia().subscribe(data=>{
+ //     this.miPorfolioExp.push(this.miPorfolioExp.indexOf(item),1)
+ //   })
+   
+ //   }
 }
+
+

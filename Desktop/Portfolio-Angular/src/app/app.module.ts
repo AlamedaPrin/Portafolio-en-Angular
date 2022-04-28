@@ -13,6 +13,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EducacionComponent } from './componentes/educacion/educacion.component';
 import { EducacionDosComponent } from './educacion-dos/educacion-dos.component';
+import { AuthComponent } from './componentes/auth/auth.component';
+import { PorfolioComponent } from './componentes/porfolio/porfolio.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,13 +26,16 @@ import { EducacionDosComponent } from './educacion-dos/educacion-dos.component';
     CualidadesComponent,
     FooterComponent,
     EducacionComponent,
-    EducacionDosComponent
+    EducacionDosComponent,
+    AuthComponent,
+    PorfolioComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,    
   ],
   providers: [],
   bootstrap: [AppComponent]

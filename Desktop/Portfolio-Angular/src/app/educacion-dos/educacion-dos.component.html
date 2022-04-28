@@ -2,11 +2,8 @@
     <div class="edu">
       <i class="fas fa-university fa-2x" id="univ"></i>
       <h3 class="de">Educación</h3>
-    </div>    
-  
-  
-    <!-- Desde aca -->
-  
+    </div>   
+
     <div class="container-fluid educacion">
       <div *ngFor="let item of educacionDos" class="row mb-2">
         <div class="col-1">
@@ -20,18 +17,16 @@
           
         </div> 
         <div class="col-2">
-          <i type="button" class="fas fa-pen" data-bs-toggle="modal" id="aver" data-bs-target="#modalEducacionDos" *ngIf="usuarioAutenticadoEducacionDos" (click)="editarDatosEducacionDos(item)"></i>
-          <i type="button" class="fas fa-trash-alt" id="aber" *ngIf="usuarioAutenticadoEducacionDos" ></i>
+          <i type="button" class="fas fa-pen" data-bs-toggle="modal" id="aver" data-bs-target="#modalEducacionDos" *ngIf="usuarioAutenticado" (click)="editarDatosEducacionDos(item)"></i>
+          <i type="button" class="fas fa-trash-alt" id="aber" *ngIf="usuarioAutenticado" ></i>
         </div> 
       </div>
 
-      <div>
+      <div>  <!-- acomodar este boton, por fuera de la seccion para que siempre quede -->
         <i type="button" class="fa fa-plus" id="plusEdu">Agregar</i>
       </div>
       
     </div>     
-  
-  <!-- Hasta aca -->
   
   </section>
   
@@ -50,7 +45,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Editar Información</h5>
+          <h5 class="modal-title" id="exampleModalLabel"> Editar Información</h5>
           <button
             type="button"
             class="btn-close"
@@ -96,9 +91,11 @@
 
         </div>
         <div class="modal-footer">
+
+          <!-- Ojo al ID -->
           <button
             type="button"
-            id="cerrarModalEduDos"
+            id="cerrarModalEduDos"  
             class="btn btn-dark"
             data-bs-dismiss="modal"
            (click)="salirEducacionDos"> Salir </button>

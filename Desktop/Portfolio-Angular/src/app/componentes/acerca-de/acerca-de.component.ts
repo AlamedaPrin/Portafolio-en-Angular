@@ -12,7 +12,7 @@ export class AcercaDeComponent implements OnInit {
   miPorfolioAcerca!: AcercaDe;
   formAcerca: FormGroup;
   formAgregarAcerca: FormGroup;
-  usuarioAutenticadoAcerca: boolean = true; // Se muestran los botones. Por defecto debe estar en false
+  usuarioAutenticado: boolean = true; // Se muestran los botones. Por defecto debe estar en false
 
   constructor(
     private datosAcercaPorfolio: AcercaService,
@@ -38,21 +38,33 @@ export class AcercaDeComponent implements OnInit {
   }
 
   agregarAcercaDe() { 
-    if (this.formAgregarAcerca.valid) {
 
-    let agregarAcer = this.formAgregarAcerca.controls['acerc'].value;
+    let id = this.miPorfolioAcerca.acerca
+    let acerca = this.miPorfolioAcerca.acerca
+         
 
-    let acercaNuevo = new AcercaDe (this.miPorfolioAcerca.id, agregarAcer); 
+    let acercaNueva = new AcercaDe (id, acerca, this.miPorfolioAcerca.idPersona) 
 
-    this.datosAcercaPorfolio.crearAcercaDe(acercaNuevo).subscribe(data => {
-      this.miPorfolioAcerca = acercaNuevo;      
-      document.getElementById('cerrarModalAgregarAcerca')?.click();      
-    })
+    this.datosAcercaPorfolio.crearAcercaDe(acercaNueva).subscribe(data => {
+     this.miPorfolioAcerca = acercaNueva;
+    })     
   }
-  }    
-  
-  crearAcercaDe(){}
 
+
+
+
+
+  // if (this.formAgregarAcerca.valid) {
+  //let agregarAcer = this.formAgregarAcerca.controls['acerc'].value;
+  //let acercaNuevo = new AcercaDe (this.miPorfolioAcerca.id, agregarAcer, this.miPorfolioAcerca.idPersona); 
+  //this.datosAcercaPorfolio.crearAcercaDe(acercaNuevo).subscribe(data => {
+  // this.miPorfolioAcerca = acercaNuevo;      
+  //document.getElementById('cerrarModalAgregarAcerca')?.click();      
+  //})
+  //}
+    
+  
+  
 
   eliminarAcercaDe(){}   
      
@@ -62,7 +74,7 @@ export class AcercaDeComponent implements OnInit {
       
       let acercaDe = this.formAcerca.controls['acercaDe'].value;
 
-      let acercaEditar = new AcercaDe (this.miPorfolioAcerca.id,acercaDe);
+      let acercaEditar = new AcercaDe (this.miPorfolioAcerca.id,acercaDe, this.miPorfolioAcerca.idPersona);
 
       this.datosAcercaPorfolio.editarDatosAcerca(acercaEditar).subscribe(
         (data) => {
