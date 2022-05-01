@@ -20,7 +20,7 @@ export class ExperienciaComponent implements OnInit {
   constructor(private miServicio:ExperienciaService, private miFormBuilder:FormBuilder) { 
     this.form = this.miFormBuilder.group({
       tipoDeExperiencia: ['', [Validators.required]],
-    })
+    });
   }
 
   ngOnInit(): void {
@@ -53,7 +53,7 @@ export class ExperienciaComponent implements OnInit {
         }, error => {
           
           console.log(error);
-        })
+        });
   } else {
   
     experiencia.id = this.id;
@@ -66,7 +66,7 @@ export class ExperienciaComponent implements OnInit {
       this.obtenerExperiencia();
     }, error => {
       console.log(error);
-    })
+    });
   }
 }
 
@@ -77,7 +77,7 @@ editarExperiencia(experiencia: any) {
 
   this.form.patchValue({
     tipoDeExperiencia: experiencia.tipoDeExperiencia,
-  })
+  });
 }
 
 eliminarExperiencia(id: number){
@@ -85,6 +85,6 @@ eliminarExperiencia(id: number){
   this.miServicio.deleteExperiencia(id).subscribe(data=>{
    
     this.obtenerExperiencia ();
-  })
+  });
 }
 }

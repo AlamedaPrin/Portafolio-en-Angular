@@ -184,18 +184,13 @@ span {
 .acerca {
   display: flex;
   background-color: #fff;
+  padding: 10px;
 }
 
 .acerca2 {
-  /*  border: solid #4bcffa 2px;
-    border-radius: 10px;
-    margin: 1em;
-    margin-top: 1cm;  
-    padding: 10px;
-    background-color: #fff; 
-    */
 
   display: flex;
+  padding: 10px;
 }
 
 #code {
@@ -285,6 +280,10 @@ h2 {
 
 /* Educación */
 
+.edu {
+  padding: 10px;
+}
+
 .educacion {
   padding: 1cm;
 }
@@ -309,19 +308,13 @@ h2 {
 }
 
 .habilidad {
-  /*
-    border: solid #4bcffa 2px;
-    border-radius: 10px;
-    margin: 1em;
-    margin-top: 1cm;  
-    padding: 10px;
-    background-color: #fff;    
-    */
+  padding: 10px;
   display: flex;
 }
 
 .barras {
   margin-top: 0.5cm;
+  padding: 10px;
 }
 
 h3 {
@@ -336,6 +329,10 @@ h3 {
 
 /* proyectos */
 
+#pro {
+  padding: 10px;
+}
+
 .ulti {
   border: solid #4bcffa 2px;
   border-radius: 10px;
@@ -345,15 +342,8 @@ h3 {
   background-color: #fff;
 }
 
-.proyecto {
-  /*
-    border: solid #4bcffa 2px;
-    border-radius: 10px;
-    margin: 1em;
-    margin-top: 1cm;  
-    padding: 10px;
-    background-color:  #fff;
-  */
+.proyecto { 
+  padding: 10px;
   display: flex;
 }
 
