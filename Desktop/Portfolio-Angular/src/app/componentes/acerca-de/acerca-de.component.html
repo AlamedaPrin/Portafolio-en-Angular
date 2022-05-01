@@ -9,18 +9,12 @@
 
             <!-- botones de edición -->
         <i *ngIf="usuarioAutenticado" type="button" class="fas fa-pen" id="aver" data-bs-toggle="modal"
-          data-bs-target="#modalAcercaDe" (click)="mostrarDatosAcerca()"></i>
-        <i *ngIf="usuarioAutenticado" type="button" class="fas fa-trash-alt" id="aber" (click)="eliminarAcerca()"></i>        
+          data-bs-target="#modalAcercaDe" (click)="mostrarDatosAcerca()"></i>              
             <!------------------------>
 
     <div id="campoAcerca">
       <h5 id="Lorem"> {{miPorfolioAcerca.acerca}}</h5> 
-    </div>
-
-    <div>
-      <i type="button" class="fa fa-plus" data-bs-toggle="modal" data-bs-target="#modalAgregarAcercaDe" id="plus">Agregar</i>
-    </div>
-
+    </div> 
          
 
   </section>

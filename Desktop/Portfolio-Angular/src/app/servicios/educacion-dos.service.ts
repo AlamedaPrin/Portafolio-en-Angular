@@ -12,12 +12,12 @@ export class EducacionDosService {
 
   url:string = 'http://localhost:8080/educacion';
 
-  obtenerDatosEducacionDos(): Observable<EducacionDos[]> {
+  obtenerDatosEducacionDos(): Observable<EducacionDos[]> {  
     return this.http.get<EducacionDos[]>(this.url);
   } 
 
-  editarDatosEducacionDos(educacionDos:any):Observable<any> {
-    return this.http.put(this.url + "/",educacionDos);
+  editarDatosEducacionDos(id:number, educacionDos:any):Observable<any> {
+    return this.http.put(this.url +"/"+id, educacionDos);
   }
 
   eliminarDatosEducacionDos(id: number): Observable<any>{

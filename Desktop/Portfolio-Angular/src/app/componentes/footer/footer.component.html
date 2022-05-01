@@ -4,15 +4,27 @@
       <h3 class="de">Proyectos</h3>
     </div>
 
-       <i *ngIf="usuarioAutenticado" type="button" class="fas fa-pen" id="aver" data-bs-toggle="modal" data-bs-target="#modalProyecto" (click)="mostrarDatosProyecto()"></i>               
-       <i *ngIf="usuarioAutenticado" type="button" class="fas fa-trash-alt" id="aber" (click)="eliminarProyectos()"></i>
-    <div>
-      <h5 id="Lorem">{{miPorfolioProyecto.proyecto}}</h5>
+    <div class="container-fluid proyectos">
+
+      <div *ngFor="let proyecto of proyectoList" class="row mb-2">
+
+
+        <div class="col-9">
+      <h4 id="lorem">{{proyecto.tipoDeProyecto}}</h4>
+        </div>
+
+      <div class="col-3">
+       <i type="button" *ngIf="usuarioAutenticado"  class="fas fa-pen" id="aver" data-bs-toggle="modal" data-bs-target="#proyectoModal" (click)="editarProyecto(proyecto)"></i>               
+       <i type="button" *ngIf="usuarioAutenticado"  class="fas fa-trash-alt" id="aber" (click)="eliminarProyecto(proyecto.id)"></i>
+      </div>
+
     </div>
 
-    <div>
-      <i type="button" class="fa fa-plus" id="plus" data-bs-toggle="modal" data-bs-target="#modalAgregarProyecto" (click)="agregarProyecto()">Agregar</i>
+    <div class="col-9">
+      <i type="button" *ngIf="usuarioAutenticado" class="fa fa-plus" id="plus" data-bs-toggle="modal" data-bs-target="#proyectoModal">Agregar</i>
     </div>
+  
+</div>
     
   </footer>  
 
@@ -21,7 +33,7 @@
     </div>
 
     <!-- Modal -->
-<div class="modal fade" id="modalProyecto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="proyectoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -29,49 +41,21 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="formProyecto"> 
+        <form [formGroup]="form"> 
           
           <div class="mb-3">
             <label for="campoProyecto" class="form-label">Proyecto</label>
-            <input type="text" class="form-control" id="campoProyecto" placeholder="Edite aquí el campo Proyecto" formControlName="Proyectos">  
+            <input type="text" class="form-control" id="campoProyecto" formControlName="tipoDeProyecto">  
             
               </div>         
 
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id="cerrarModalProy" class="btn btn-dark" data-bs-dismiss="modal" (click)="salirProyecto()">Salir</button>
+        <button type="button" id="cerrarModalProy" class="btn btn-dark" data-bs-dismiss="modal">Salir</button>
         <button type="button" class="btn btn-info" (click)="guardarProyecto()">Guardar</button>
       </div>
     </div>
   </div>
 </div>
 
-
-<!-- Modal Agregar-->
-<div class="modal fade" id="modalAgregarProyecto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Agregar Información</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          
-            <div class="mb-3">
-
-            <label for="campoAcercaDe" class="form-label">Proyectos</label>
-            <input type="text" class="form-control" id="campoAcercaDe" placeholder="Agregue aquí su proyecto">
-            
-            </div>                      
-        
-        </form>
-      </div>
-      <div class="modal-footer">        
-        <button type="button" id="cerrarModalAcerca" class="btn btn-dark" data-bs-dismiss="modal" (click)="salirProyecto()">Salir</button>
-        <button type="button" class="btn btn-info">Guardar</button>
-      </div>
-    </div>
-  </div>
-</div>

@@ -9,84 +9,95 @@ import { EducacionService } from 'src/app/servicios/educacion.service';
   styleUrls: ['./educacion.component.css'],
 })
 export class EducacionComponent implements OnInit {
+  
+  educacionList!: Educacion[];
+  form: FormGroup;
+  accion = 'Agregar';
+  id: number | undefined;
+  usuarioAutenticado: boolean = true; // por defecto debe estar en false
 
-  //Atributos
-  miPorfolioEdu: any;
-  formEducacion: FormGroup;
-  isUserLogged: boolean = true; // por defecto debe estar en false
+  
+  constructor(private miServicio:EducacionService, private miFormBuilder:FormBuilder)
+  
+  {
+    this.form = this.miFormBuilder.group({
+      career: ['', [Validators.required]],
+      comienzo: ['', [Validators.required]],
+      fin: ['', [Validators.required]],
+      url: ['https://', [Validators.required]],
+      school: ['', [Validators.required]],
 
-  //constructor de clase
-
-  constructor(
-    private datosEducacionPorfolio: EducacionService,
-    private educacionFormBuilder: FormBuilder
-  ) {
-    this.formEducacion = this.educacionFormBuilder.group({
-      descripcion1: ['', [Validators.minLength(20)]],
-      descripcion2: ['', [Validators.minLength(20)]],
     });
   }
-
-  // Getters
-  get descripcion1() {
-    return this.formEducacion.get('descripcion1');
-  }
-
-  get descripcion2() {
-    return this.formEducacion.get('descripcion2');
-  }
+  
 
   ngOnInit(): void {
-    this.datosEducacionPorfolio.obtenerDatosEducacion().subscribe((data) => {
-      console.log(data);
-      this.miPorfolioEdu = data;
-    });
+    this.obtenerEducacion();
     
   }
 
-  //métodos
+  obtenerEducacion(){
+     this.miServicio.getListEducacion().subscribe(data => {
+       this.educacionList = data;
+     }, error =>{
+       console.log(error);
+     });  
+  }  
 
-  guardarEducacion() {
-    if (this.formEducacion.valid) {
-      
-      let descripcion1 = this.formEducacion.controls['descripcion1'].value;
-      let descripcion2 = this.formEducacion.controls['descripcion2'].value;
+     guardarEducacion() {
+    
+        const educacion: any = {
 
-      let educacionEditar = new Educacion(descripcion1, descripcion2);
+        career: this.form.get('career')?.value,
+        comienzo: this.form.get('comienzo')?.value,
+        fin: this.form.get('fin')?.value,
+        imgEdu: this.form.get('url')?.value,
+        school: this.form.get('school')?.value, 
 
-      this.datosEducacionPorfolio
-        .editarDatosEducacion(educacionEditar)
-        .subscribe(
-          (data) => {
-            this.miPorfolioEdu = educacionEditar;
-            this.formEducacion.reset();
-            document.getElementById('cerrarModalEdu')?.click();
-          },
-          (error) => {
-            alert(
-              'No se pudo actualizar el registro. Por favor, intente nuevamente o contacte al administrador'
-            );
-          }
-        );
-    } else {
-      this.formEducacion.markAllAsTouched();
-    }
-  }
+        }
 
-  mostrarDatosEducacion() {
-    this.formEducacion.controls['descripcion1'].setValue(
-      this.miPorfolioEdu.descripcion1
-    );
-    this.formEducacion.controls['descripcion2'].setValue(
-      this.miPorfolioEdu.descripcion2
-    );
-  }
+  if (this.id == undefined) {
 
-  salirEducacion() {
-    this.formEducacion.reset();
-  }
+    this.miServicio.saveEducacion(educacion).subscribe(data => {
+      this.obtenerEducacion();
+      this.form.reset();
+    }, error => {
+      console.log(error);
+    });
+  } else {
 
-  eliminarEducacion() {
-    document.getElementById('educId')?.remove();
-  }
+    educacion.id = this.id;
+
+    this.miServicio.updateEducacion(this.id, educacion).subscribe(data => {
+      this.form.reset();
+      this.accion = 'Agregar';
+      this.id = undefined;
+      ;
+      this.obtenerEducacion();      
+    }, error => {
+      console.log(error);
+    })
+  } 
+}
+
+ editarEducacion(educacion: any) {
+   this.accion = 'Editar';
+   this.id = educacion.id;
+
+
+   this.form.patchValue({
+    career: educacion.career,
+    comienzo: educacion.comienzo,
+    fin: educacion.fin,
+    imgEdu: educacion.imgEdu,
+    school: educacion.school
+   })
+ }
+
+
+ eliminarEducacion(id: number) {
+   this.miServicio.deleteEducacion(id).subscribe(data => {
+     this.obtenerEducacion();
+   })
+ }
 }

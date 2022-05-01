@@ -14,10 +14,10 @@ export class ExperienciaEducacionComponent implements OnInit {
   formExp: FormGroup;
   usuarioAutenticado: boolean = true; // por defecto debe estar en false
 
-  constructor(private datosExperienciaPorfolio: ExperienciaService,private experienciaFormBuilder: FormBuilder)   
+  constructor(private miServicio: ExperienciaService,private miFormBuilder: FormBuilder)   
     
    {
-    this.formExp = this.experienciaFormBuilder.group({
+    this.formExp = this.miFormBuilder.group({
       experienciaUno: [''],
       experienciaDos: [''],
       experienciaTres: [''],
@@ -41,7 +41,7 @@ export class ExperienciaEducacionComponent implements OnInit {
     return this.formExp.get('experienciaCuatro');
   }
   
-  ngOnInit(): void {this.datosExperienciaPorfolio.obtenerDatosExperiencia().subscribe((data) => {
+  ngOnInit(): void {this.miServicio.obtenerDatosExperiencia().subscribe((data) => {
     console.log(data);
     this.miPorfolioExp = data;
   });   
@@ -59,7 +59,7 @@ export class ExperienciaEducacionComponent implements OnInit {
 
       let experienciaEditar = new Experiencia(this.miPorfolioExp.id, experienciaUno, experienciaDos, experienciaTres, experienciaCuatro, this.miPorfolioExp.idPersona);
 
-      this.datosExperienciaPorfolio
+      this.miServicio
         .editarDatosExperiencia(experienciaEditar)
         .subscribe(
           (data) => {
