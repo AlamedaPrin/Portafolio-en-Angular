@@ -14,6 +14,7 @@ import { EducacionComponent } from './componentes/educacion/educacion.component'
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { ExperienciaComponent } from './componentes/experiencia/experiencia.component';
+import { SkillComponent } from './componentes/skill/skill.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ExperienciaComponent } from './componentes/experiencia/experiencia.comp
     EducacionComponent,
    // EducacionDosComponent,
     NavbarComponent,
-    ExperienciaComponent
+    ExperienciaComponent,
+    SkillComponent
   ],
   imports: [
     BrowserModule,
