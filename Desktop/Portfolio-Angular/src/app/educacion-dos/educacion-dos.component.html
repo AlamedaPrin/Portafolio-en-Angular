@@ -1,34 +1,36 @@
 <section class="seccion2" id="educId">
-    <div class="edu">
-      <i class="fas fa-university fa-2x" id="univ"></i>
-      <h3 class="de">Educación</h3>
-    </div>   
+  <div class="edu">
+    <i class="fas fa-university fa-2x" id="univ"></i>
+    <h3 class="de">Educación</h3>
+  </div>
 
-    <div class="container-fluid educacion">
-      <div *ngFor="let item of educacionDos" class="row mb-2">
-        <div class="col-1">
-          <img [src]="item.img" alt="Logo escuela" class="img-fluid" id="tamanioLogoEdu">
-        </div>
-        <div class="col-9">
-
-          <h2 id="infoEdu">{{item.school}}</h2>      
-          <h4>{{item.career}}</h4>
-          <p>{{item.comienzo}} - {{item.fin}}</p>
-          
-        </div> 
-        <div class="col-2">
-          <i type="button" class="fas fa-pen" data-bs-toggle="modal" id="aver" data-bs-target="#modalEducacionDos" *ngIf="usuarioAutenticado" (click)="editarDatosEducacionDos(item)"></i>
-          <i type="button" class="fas fa-trash-alt" id="aber" *ngIf="usuarioAutenticado" ></i>
-        </div> 
+  <div class="container-fluid educacion">
+    <div *ngFor="let educacion of educacionList" class="row mb-2">
+      <div class="col-1">
+        <img [src]="educacion.imgEdu" alt="Logo escuela" class="img-fluid" id="tamanioLogoEdu">
       </div>
+      <div class="col-9">
 
-      <div>  <!-- acomodar este boton, por fuera de la seccion para que siempre quede -->
-        <i type="button" class="fa fa-plus" id="plusEdu">Agregar</i>
+        <h2 id="infoEdu">{{educacion.school}}</h2>
+        <h4>{{educacion.career}}</h4>
+        <p>{{educacion.comienzo}} - {{educacion.fin}}</p>
+
       </div>
-      
-    </div>     
-  
-  </section>
+      <div class="col-2">
+        <i type="button" *ngIf="usuarioAutenticado" class="fas fa-pen" data-bs-toggle="modal" id="aver" data-bs-target="#modalEducacionDos"
+           (click)="editarEducacion(educacion)"></i>
+        <i type="button" *ngIf="usuarioAutenticado" class="fas fa-trash-alt" id="aber" (click="eliminarEducacion(educacion.id)"></i>
+      </div>
+    </div>
+
+  </div>
+
+  <div>
+    <!-- acomodar este boton, por fuera de la seccion para que siempre quede -->
+    <i type="button" *ngIf="usuarioAutenticado" data-bs-toggle="modal" class="fa fa-plus" id="plusEdu" data-bs-target="#educacionModal">Agregar</i>
+  </div>
+
+</section>
   
   
   
@@ -37,7 +39,7 @@
   
   <div
     class="modal fade"
-    id="modalEducacionDos"
+    id="educacionModal"
     tabindex="-1"
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
@@ -45,45 +47,29 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel"> Editar Información</h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
+          <h5 class="modal-title" id="exampleModalLabel"> {{accion}} Educación</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>                      
+            
+          
         </div>
         <div class="modal-body">
-         <form [formGroup]="formEducacionDos">
+         <form [formGroup]="form">
             <div>
 
-              <label for="campoSchool" class="form-label">Institucion</label>                    
-              <input type="text" class="form-control" id="campoSchool" placeholder="Edite aquí el campo Institución" formControlName="school"/>  
-              
-              <div *ngIf="school?.invalid && school?.touched">
-                <div *ngIf="school?.errors?.['minlength']" class="text-danger">
-                
-                  El campo debe contener mínimo 5 caracteres.
-  
-                </div>
-              </div>
+              <label for="school" class="form-label">Institucion</label>                    
+              <input type="text" class="form-control" id="school" formControlName="school"/>             
                                      
-              <label for="campoCareer" class="form-label" id="estiloEduDos">Carrera</label>                     
-              <input type="text" class="form-control" id="campoCareer" placeholder="Edite aquí el campo carrera" formControlName="career"/>  
-
-              <div *ngIf="career?.invalid && career?.touched">
-                <div *ngIf="career?.errors?.['minlength']" class="text-danger">
-                
-                  El campo debe contener mínimo 10 caracteres.
-  
-                </div>
-              </div>
+              <label for="career" class="form-label" id="estiloEduDos">Carrera</label>                     
+              <input type="text" class="form-control" id="career" formControlName="career"/>             
               
-              <label for="campoStart" class="form-label" id="estiloEduDos">Inicio</label>                     
-              <input type="text" class="form-control" id="campoStart" placeholder="Edite aquí el campo inicio" formControlName="start"/> 
+              <label for="comienzo" class="form-label" id="estiloEduDos">Mes y año de Inicio</label>                     
+              <input type="text" class="form-control" id="comienzo" formControlName="comienzo"/> 
 
-              <label for="campoEnd" class="form-label" id="estiloEduDos">Finalización</label>                     
-              <input type="text" class="form-control" id="campoEnd" placeholder="Edite aquí el segundo finalización" formControlName="end"/>
+              <label for="fin" class="form-label" id="estiloEduDos">Mes y año de finalización</label>                     
+              <input type="text" class="form-control" id="fin" formControlName="fin"/>
+
+              <label for="url" class="form-label" id="estiloEduDos">Imagen</label>                     
+              <input type="text" class="form-control" id="url" formControlName="url"/>
       
              </div>           
 
@@ -93,17 +79,8 @@
         <div class="modal-footer">
 
           <!-- Ojo al ID -->
-          <button
-            type="button"
-            id="cerrarModalEduDos"  
-            class="btn btn-dark"
-            data-bs-dismiss="modal"
-           (click)="salirEducacionDos"> Salir </button>
-            
-          
-          <button type="button" class="btn btn-info" (click)="guardarEducacionDos()">
-            Guardar
-          </button>
+          <button type="button" id="cerrarModalEducacion" class="btn btn-dark" data-bs-dismiss="modal"> Cerrar </button>         
+          <button type="submit" class="btn btn-info" (click)="guardarEducacion()"> Guardar </button>
         </div>
       </div>
     </div>

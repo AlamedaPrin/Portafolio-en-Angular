@@ -7,24 +7,24 @@ import { Proyecto } from '../Entidades/proyecto';
   providedIn: 'root',
 })
 export class ProyectosService {
-  
-  constructor(private http: HttpClient) {}
 
   url:string = "http://localhost:8080/proyecto";
+  
+  constructor(private http: HttpClient) {}  
 
-  obtenerDatosProyectos(): Observable<Proyecto> {               //funciona
-    return this.http.get<Proyecto>(this.url+"/1");
+  getListProyectos(): Observable<Proyecto[]> {               //funciona
+    return this.http.get<Proyecto[]>(this.url);
   };
 
-  editarDatosProyectos(proyecto:Proyecto):Observable<Proyecto> { //funciona
-  return this.http.put<Proyecto>(this.url, proyecto)
+  updateProyecto(id:number,proyecto:any):Observable<any> { //funciona
+  return this.http.put(this.url+"/"+id, proyecto)
  }
 
- crearProyecto(proyecto:Proyecto):Observable<Proyecto> {
-   return this.http.post<Proyecto>(this.url, proyecto);
+ saveProyecto(proyecto:any): Observable<any> {
+   return this.http.post(this.url, proyecto);
  }
 
- eliminarProyecto(id: number): Observable<any> {
+ deleteProyecto(id:number): Observable<any> {
    return this.http.delete(this.url+"/"+id)
  }
 

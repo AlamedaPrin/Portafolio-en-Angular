@@ -15,13 +15,13 @@ export class AcercaDeComponent implements OnInit {
   usuarioAutenticado: boolean = true; // Se muestran los botones. Por defecto debe estar en false
 
   constructor(
-    private datosAcercaPorfolio: AcercaService,
-    private acercaFormBuilder: FormBuilder
+    private miServicio: AcercaService,
+    private miFormBuilder: FormBuilder
   ) {
-    this.formAcerca = this.acercaFormBuilder.group({
+    this.formAcerca = this.miFormBuilder.group({
       acercaDe: [''],      
     });
-    this.formAgregarAcerca = this.acercaFormBuilder.group({
+    this.formAgregarAcerca = this.miFormBuilder.group({
       acerc: [''],
     })
   }
@@ -31,7 +31,7 @@ export class AcercaDeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.datosAcercaPorfolio.obtenerDatosAcerca().subscribe((data) => {
+    this.miServicio.obtenerDatosAcerca().subscribe((data) => {
       console.log(data);
       this.miPorfolioAcerca = data;
     });
@@ -45,7 +45,7 @@ export class AcercaDeComponent implements OnInit {
 
     let acercaNueva = new AcercaDe (id, acerca, this.miPorfolioAcerca.idPersona) 
 
-    this.datosAcercaPorfolio.crearAcercaDe(acercaNueva).subscribe(data => {
+    this.miServicio.crearAcercaDe(acercaNueva).subscribe(data => {
      this.miPorfolioAcerca = acercaNueva;
     })     
   }
@@ -76,7 +76,7 @@ export class AcercaDeComponent implements OnInit {
 
       let acercaEditar = new AcercaDe (this.miPorfolioAcerca.id,acercaDe, this.miPorfolioAcerca.idPersona);
 
-      this.datosAcercaPorfolio.editarDatosAcerca(acercaEditar).subscribe(
+      this.miServicio.editarDatosAcerca(acercaEditar).subscribe(
         (data) => {
           this.miPorfolioAcerca = acercaEditar;
           this.formAcerca.reset();

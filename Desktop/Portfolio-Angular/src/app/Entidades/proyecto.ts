@@ -1,10 +1,15 @@
 export class Proyecto {
+
   id: number;
-  proyecto: String;
+  tipoDeProyecto: String;
   idPersona: number;
-  constructor(id:number, proyecto: String, idPersona: number) {
+
+  constructor(id:number, tipoDeProyecto: String, idPersona: number)
+
+   {
     this.id = id;
-    this.proyecto = proyecto;
+    this.tipoDeProyecto = tipoDeProyecto;
     this.idPersona = idPersona;
-  }
+   }
+   
 }

@@ -13,19 +13,19 @@ export class ExperienciaService {
 
   constructor(private http: HttpClient) {}
 
-  obtenerDatosExperiencia(): Observable<any> {
-    return this.http.get(this.url+"/1"); // siempre trae el registro 1 de la base de datos
+  getListExperiencia(): Observable<Experiencia[]> {
+    return this.http.get<Experiencia[]>(this.url);
   }
 
-  editarDatosExperiencia(experiencia: Experiencia): Observable<any> {
-    return this.http.put(this.url, experiencia);
+  updateExperiencia(id:number,experiencia:any): Observable<any> {
+    return this.http.put(this.url+"/"+id,experiencia);
   }
 
-  crearExperiencia(id: number, experiencia: Experiencia): Observable<any> {
-    return this.http.post(this.url + "/" + id, experiencia);
+  saveExperiencia(experiencia:any): Observable<any> {
+    return this.http.post(this.url,experiencia);
   }
 
-  eliminarExperiencia(id: number): Observable<any> {
+  deleteExperiencia(id:number): Observable<any> {
     return this.http.delete(this.url+"/"+id)
   }
 }

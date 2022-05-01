@@ -1,9 +1,21 @@
+/* navbar */
+
 .cabecera {
   background-color: #1e272e;
 }
 
 .spacer {
   flex: 1;
+}
+
+.navB {
+  display: flex;
+  justify-content: center;
+}
+
+#navB {
+  display: flex;
+  justify-content: center;
 }
 
 .toolbar {
@@ -13,6 +25,7 @@
   right: 0;
   height: 60px;
   display: flex;
+  justify-content: center;
   align-items: center;
   background-color: #1e272e;
   color: white;
@@ -230,14 +243,14 @@ span {
 } 
 
 #aver {
-  margin-top: -2.2em;
-  padding-right: 0.7cm;
+  margin-top: 0em;
+  padding-right: 0cm;
   float: right;
 }
 
 #aber {
-  margin-top: -2.2em;
-  margin-left: 0.3cm;
+  margin-top: 0em;
+  padding-right: 0.5cm;
   float: right;
 }
 

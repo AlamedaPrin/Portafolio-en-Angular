@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EducacionDos } from '../Entidades/educacionDos';
-
 import { EducacionDosService } from '../servicios/educacion-dos.service';
 
 @Component({
@@ -11,98 +10,95 @@ import { EducacionDosService } from '../servicios/educacion-dos.service';
 })
 export class EducacionDosComponent implements OnInit {
 
-  educacionDos!:EducacionDos[];
-  formEducacionDos:FormGroup;
+  educacionList!:EducacionDos[];
+  form:FormGroup;
   accion = 'Agregar';
+  id: number | undefined;
   usuarioAutenticado: boolean = true; // por defecto debe estar en false
-  educacionEdit!: EducacionDos;
-
-  constructor(private datosEducacionDosPorfolio:EducacionDosService, private educacionDosFormBuilder: FormBuilder ) { 
-    this.formEducacionDos = this.educacionDosFormBuilder.group({
-      school: ['', [Validators.minLength(5)]],
-      career: ['', [Validators.minLength(10)]],
-      comienzo:[''],
-      fin:['']
+  
+  constructor(private miServicio:EducacionDosService, private miFormBuilder: FormBuilder ) { 
+    this.form = this.miFormBuilder.group({
+      career: ['', [Validators.required]],
+      comienzo:['',[Validators.required]],
+      fin:['',[Validators.required]],
+      url:['https://', [Validators.required]],
+      school: ['', [Validators.required]],    
+      
     });
   }
-
-  //Getters
-
-  get school(){
-    return this.formEducacionDos.get('school');
-  }
-
-  get career(){
-    return this.formEducacionDos.get('career');
-  }
-
-  get comienzo(){
-    return this.formEducacionDos.get('comienzo');
-  }
-
-  get fin(){
-    return this.formEducacionDos.get('fin');
-  }
+  
 
 
   ngOnInit(): void {
-    this.datosEducacionDosPorfolio.obtenerDatosEducacionDos().subscribe(data => {
-      this.educacionDos=data
-    });
+    this.obtenerEducacion();    
   }
 
-  // Métodos
-
-  editarDatosEducacionDos(item: EducacionDos) {
-    this.educacionEdit=item;   
-     
+  obtenerEducacion(){
+    this.miServicio.obtenerDatosEducacionDos().subscribe(data => {
+      this.educacionList = data;
+    }, error => {
+      console.log(error);
+    })
   }
 
-  guardarEducacionDos() {
+  guardarEducacion(){  //ver donde va este metodo
+  
+    const educacion:any = {
+      career: this.form.get('career')?.value,
+      comienzo: this.form.get('comienzo')?.value,
+      fin: this.form.get('fin')?.value,
+      imgEdu: this.form.get('url')?.value,
+      school: this.form.get('school')?.value,
+    }
 
-    if (this.formEducacionDos.valid) {
+    if (this.id == undefined) {
+      //Creacion Educación
+      this.miServicio.crearEducacionDos(educacion).subscribe(data => {
 
-      
-      let school  =  this.formEducacionDos.controls['school'].value;
-      let career  =  this.formEducacionDos.controls['career'].value;
-      let img     =  this.formEducacionDos.controls['img'].value;
-      let comienzo   =  this.formEducacionDos.controls['comienzo'].value;
-      let fin     =  this.formEducacionDos.controls['fin'].value;
-      let idPersona =  this.formEducacionDos.controls['idPersona'].value;
-
-      let educacionDosEditar = new EducacionDos(this.educacionEdit.id, school, career, img, comienzo, fin, idPersona);
- 
-      this.datosEducacionDosPorfolio.editarDatosEducacionDos(educacionDosEditar).subscribe((data) => {
-       //this.educacionDos.(this.educacionEdit => this.educacionEdit.id == educacionDosEditar.id); 
-        this.formEducacionDos.reset();
-        
-        document.getElementById('cerrarModalEduDos')?.click();
-      },
-      (error) => {
-        alert(
-          'No se pudo actualizar el registro. Por favor, intente nuevamente o contacte al administrador'
-        );
-       }      
-      );
+        this.obtenerEducacion();
+        this.form.reset();
+      }, error => {
+        console.log(error);
+      })
     } else {
-      this.formEducacionDos.markAllAsTouched();
+
+      educacion.id = this.id
+       //Edición Educación
+       this.miServicio.editarDatosEducacionDos(this.id, educacion).subscribe(data => {
+         this.form.reset();
+         this.accion = 'Agregar';
+         this.id = undefined;
+         ;
+         this.obtenerEducacion();
+       }, error => {
+         console.log(error);
+       })
     }
   }
 
-  //eliminarEducacionDos(item:EducacionDos)
-  //{
-  //  alert(item.id);
-  //  this.datosEducacionDosPorfolio.eliminarDatosEducacionDos(item.id).subscribe(data =>{
-  //    this.educacionDos.splice(this.educacionDos.indexOf(data),1);
-  //  })
-  //  }
+  //Editar
+
+  editarEducacion(educacion: any) {
+    this.accion = 'Editar';
+    this.id = educacion.id;
 
 
-
-  salirEducacionDos() {
-    this.formEducacionDos.reset();
+    this.form.patchValue({
+      career: educacion.career,
+      comienzo: educacion.comienzo,
+      fin: educacion.fin,
+      imgEdu: educacion.imgEdu,
+      school: educacion.school,
+    })
   }
 
-  
+  //Eliminar
 
+  eliminarEducacion(id: number){
+    this.miServicio.eliminarDatosEducacionDos(id).subscribe(data => {
+      this.obtenerEducacion();
+    })
+  }
 }
+
+ 
