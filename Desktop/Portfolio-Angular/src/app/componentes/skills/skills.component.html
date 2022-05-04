@@ -1,0 +1,35 @@
+<section class="seccion3" id="aptitudId">
+
+    <div class="habilidad">
+      <i class="fas fa-smile-wink fa-2x" id="guinio"></i>
+        <h3 class="de">Skills</h3>
+        <div class="col-9">
+          <button *ngIf="usuarioAutenticado" data-bs-toggle="modal" id="plusEdu" data-bs-target="#skillModal" ><i class="" title="add">Agregar</i></button>
+           
+         </div>  
+   </div>
+
+     <ul>
+       <li *ngFor="let skill of skillList">
+
+        <div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="info-card"> 
+                <div class="col-md-6">
+                  <i *ngIf="usuarioAutenticado" type="button" data-bs-toggle="modal" data-bs-target="#skillModal" class="fas fa-pen" id="aver" (click)="editarSkill(skill)"></i>               
+                  <i *ngIf="usuarioAutenticado" type="button" class="fas fa-trash-alt" id="aber" (click)="eliminarSkill(skill.id)"></i>
+                </div>
+
+                <h3>{{skill.tipoDeSkill}}</h3>
+
+                <div class="progress">  
+                  <div class="progress-bar" role="progressbar"  aria-valuemin="0" aria-valuemax="100">
+                  </div>
+              
+
+              </div>
+            </div>
+          </div>
+        </div>
+        </div> 

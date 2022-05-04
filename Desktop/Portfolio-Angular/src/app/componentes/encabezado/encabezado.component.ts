@@ -70,11 +70,7 @@ export class EncabezadoComponent implements OnInit {
     this.form.controls['ubication'].setValue(this.miPorfolioEncabezado.ubication);
     this.form.controls['url'].setValue(this.miPorfolioEncabezado.url);
     
-  }
-
-  eliminarEncabezado(){
-    document.getElementById('encabId')?.remove();
-  }
+  }  
 
   
 }

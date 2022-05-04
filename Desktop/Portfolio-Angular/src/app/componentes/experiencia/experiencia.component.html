@@ -4,6 +4,10 @@
 
     <i class="fas fa-laptop-code fa-2x" id="code"></i>
       <h3 class="de">Experiencia</h3>
+      <div class="col">
+        <i type="button" *ngIf="usuarioAutenticado" data-bs-toggle="modal" id="plusEdu" data-bs-target="#experienciaModal" class="fa fa-plus"title="add">Agregar</i>
+         
+       </div>  
 
       </div>
   <div class="container-fluid educacion">
@@ -18,12 +22,7 @@
         <i type="button" *ngIf="usuarioAutenticado" class="fas fa-pen" data-bs-toggle="modal" id="aver" data-bs-target="#experienciaModal" (click)="editarExperiencia(experiencia)"></i>
         <i type="button" *ngIf="usuarioAutenticado" class="fas fa-trash-alt" id="aber" (click)="eliminarExperiencia(experiencia.id)" ></i>
       </div> 
-           </div>
-
-      <div class="col-9">
-        <button *ngIf="usuarioAutenticado" data-bs-toggle="modal" id="plusEdu" data-bs-target="#experienciaModal" ><i class="fa fa-plus"title="add">Agregar</i></button>
-         
-       </div>  
+           </div>       
           </div>          
 
   </section>

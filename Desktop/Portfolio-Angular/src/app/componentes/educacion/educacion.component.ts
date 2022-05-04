@@ -61,6 +61,7 @@ export class EducacionComponent implements OnInit {
     this.miServicio.saveEducacion(educacion).subscribe(data => {
       this.obtenerEducacion();
       this.form.reset();
+      document.getElementById('cerrarModalEducacion')?.click();
     }, error => {
       console.log(error);
     });

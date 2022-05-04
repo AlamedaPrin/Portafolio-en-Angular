@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Skill } from 'src/app/Entidades/skill';
-import { SkillService } from 'src/app/servicios/skill.service';
+import { SkillService } from 'src/app/servicios/skills.service';
 
 @Component({
   selector: 'app-skill',
-  templateUrl: './skill.component.html',
-  styleUrls: ['./skill.component.css']
+  templateUrl: './skills.component.html',
+  styleUrls: ['./skills.component.css']
 })
 export class SkillComponent implements OnInit {
 

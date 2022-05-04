@@ -1,8 +1,12 @@
 <footer class="ulti" id="proyectId">
     <div class="proyecto">
       <i class="fas fa-project-diagram fa-2x"></i>
-      <h3 class="de">Proyectos</h3>
+      <h3 class="de">Proyectos</h3>    
+      <div class="col">
+        <i type="button" *ngIf="usuarioAutenticado" class="fa fa-plus" id="plus" data-bs-toggle="modal" data-bs-target="#proyectoModal">Agregar</i>
+      </div>
     </div>
+    
 
     <div class="container-fluid proyectos">
 
@@ -19,10 +23,7 @@
       </div>
 
     </div>
-
-    <div class="col-9">
-      <i type="button" *ngIf="usuarioAutenticado" class="fa fa-plus" id="plus" data-bs-toggle="modal" data-bs-target="#proyectoModal">Agregar</i>
-    </div>
+   
   
 </div>
     
