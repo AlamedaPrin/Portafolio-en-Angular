@@ -353,6 +353,20 @@ h3 {
   border: solid #fff 2px;
 }
 
+/* Pie de página */
+
+.abajo {
+  padding: 20px;  
+  display: flex;
+  justify-content:center;
+}
+
+.abajoDos {
+  display: flex;
+  justify-content:center;
+}
+
+
 /* Modales */
 
 .modal-title {
