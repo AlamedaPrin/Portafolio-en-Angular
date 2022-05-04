@@ -48,6 +48,7 @@ export class FooterComponent implements OnInit {
       this.miServicio.saveProyecto(proyecto).subscribe(data => {
         this.obtenerProyectos();
         this.form.reset();
+        document.getElementById('cerrarModalProy')?.click();
       }, error => {
         console.log(error);
       })

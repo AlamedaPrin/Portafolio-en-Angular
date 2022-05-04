@@ -10,7 +10,7 @@ import { AcercaService } from 'src/app/servicios/acerca.service';
 })
 export class AcercaDeComponent implements OnInit {
   miPorfolioAcerca!: AcercaDe;
-  formAcerca: FormGroup;
+  form: FormGroup;
   formAgregarAcerca: FormGroup;
   usuarioAutenticado: boolean = true; // Se muestran los botones. Por defecto debe estar en false
 
@@ -18,7 +18,7 @@ export class AcercaDeComponent implements OnInit {
     private miServicio: AcercaService,
     private miFormBuilder: FormBuilder
   ) {
-    this.formAcerca = this.miFormBuilder.group({
+    this.form = this.miFormBuilder.group({
       acercaDe: [''],      
     });
     this.formAgregarAcerca = this.miFormBuilder.group({
@@ -27,15 +27,22 @@ export class AcercaDeComponent implements OnInit {
   }
 
   get acercaDe() {
-    return this.formAcerca.get('acercaDe');
+    return this.form.get('acercaDe');
   }
 
   ngOnInit(): void {
-    this.miServicio.obtenerDatosAcerca().subscribe((data) => {
-      console.log(data);
+    this.obtenerAcerca();
+  }
+
+  obtenerAcerca() {
+    this.miServicio.obtenerDatosAcerca().subscribe(data => {
       this.miPorfolioAcerca = data;
+    }, error => {
+      console.log(error);
     });
   }
+
+
 
   agregarAcercaDe() { 
 
@@ -43,43 +50,29 @@ export class AcercaDeComponent implements OnInit {
     let acerca = this.miPorfolioAcerca.acerca
          
 
-    let acercaNueva = new AcercaDe (id, acerca, this.miPorfolioAcerca.idPersona) 
+    let acercaNueva = new AcercaDe (id, acerca) 
 
     this.miServicio.crearAcercaDe(acercaNueva).subscribe(data => {
      this.miPorfolioAcerca = acercaNueva;
     })     
   }
-
-
-
-
-
-  // if (this.formAgregarAcerca.valid) {
-  //let agregarAcer = this.formAgregarAcerca.controls['acerc'].value;
-  //let acercaNuevo = new AcercaDe (this.miPorfolioAcerca.id, agregarAcer, this.miPorfolioAcerca.idPersona); 
-  //this.datosAcercaPorfolio.crearAcercaDe(acercaNuevo).subscribe(data => {
-  // this.miPorfolioAcerca = acercaNuevo;      
-  //document.getElementById('cerrarModalAgregarAcerca')?.click();      
-  //})
-  //}
-    
   
   
 
-  eliminarAcercaDe(){}   
+ 
      
 
   guardarAcercaDe() {
-    if (this.formAcerca.valid) {
+    if (this.form.valid) {
       
-      let acercaDe = this.formAcerca.controls['acercaDe'].value;
+      let acercaDe = this.form.controls['acercaDe'].value;
 
-      let acercaEditar = new AcercaDe (this.miPorfolioAcerca.id,acercaDe, this.miPorfolioAcerca.idPersona);
+      let acercaEditar = new AcercaDe (this.miPorfolioAcerca.id,acercaDe);
 
       this.miServicio.editarDatosAcerca(acercaEditar).subscribe(
         (data) => {
           this.miPorfolioAcerca = acercaEditar;
-          this.formAcerca.reset();
+          this.form.reset();
           document.getElementById('cerrarModalAcerca')?.click();
         },
         (error) => {
@@ -89,27 +82,22 @@ export class AcercaDeComponent implements OnInit {
         }
       );
     } else {
-      this.formAcerca.markAllAsTouched();
+      this.form.markAllAsTouched();
     }
   }
 
   salirAcercaDe() {
-    this.formAcerca.reset();
+    this.form.reset();
   }
 
   mostrarDatosAcerca() {
-    this.formAcerca.controls['acercaDe'].setValue(this.miPorfolioAcerca.acerca);
+    this.form.controls['acercaDe'].setValue(this.miPorfolioAcerca.acerca);
           
   }
-
-  mostrarDatosAgregarAcerca(){
-    this.formAgregarAcerca.controls['acerc'].setValue(this.miPorfolioAcerca.acerca);
-  }
+ 
   
 
-  eliminarAcerca() {
-    document.getElementById('campoAcerca')?.remove();
-  }
+  
 
     
 

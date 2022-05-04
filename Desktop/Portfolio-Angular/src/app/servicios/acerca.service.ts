@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { AcercaDe } from '../Entidades/acerca';
 
 @Injectable({
@@ -12,8 +12,8 @@ export class AcercaService {
 
   constructor(private http: HttpClient) {}
 
-  obtenerDatosAcerca(): Observable<AcercaDe> {
-    return this.http.get<AcercaDe>(this.url+"/1");
+  obtenerDatosAcerca(): Observable<any>{
+    return this.http.get(this.url+"/1");
   }
 
   editarDatosAcerca(acerca: AcercaDe): Observable<any> {

@@ -50,6 +50,7 @@ export class ExperienciaComponent implements OnInit {
          
           this.obtenerExperiencia();
           this.form.reset();
+          document.getElementById('cerrarModalExp')?.click();
         }, error => {
           
           console.log(error);
