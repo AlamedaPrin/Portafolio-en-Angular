@@ -1,8 +1,8 @@
-export class Skill {
+export class Skills {
 
-    id: number;
-    tipoDeSkill: string;
-    score: number;
+    public id: number;
+    public tipoDeSkill: string;
+    public score: number;
 
     constructor(id: number, tipoDeSkill: string, score: number) 
 

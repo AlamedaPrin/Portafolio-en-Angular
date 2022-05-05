@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { ExperienciaComponent } from './componentes/experiencia/experiencia.component';
 import { PieComponent } from './componentes/pie/pie.component';
-//import { SkillsComponent } from './componentes/skills/skills.component';
+import { SkillComponent } from './componentes/skills/skills.component';
 
 
 @NgModule({
@@ -27,7 +27,7 @@ import { PieComponent } from './componentes/pie/pie.component';
     NavbarComponent,
     ExperienciaComponent,
     PieComponent,
-  //  SkillsComponent,   
+    SkillComponent,   
   ],
   imports: [
     BrowserModule,
