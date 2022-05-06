@@ -12,7 +12,10 @@ import { EducacionComponent } from './componentes/educacion/educacion.component'
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { ExperienciaComponent } from './componentes/experiencia/experiencia.component';
-//import { SkillsComponent } from './componentes/skills/skills.component';
+import { PieComponent } from './componentes/pie/pie.component';
+import { SkillComponent } from './componentes/skills/skills.component';
+import { LoginComponent } from './componentes/auth/login/login.component';
+import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
 
 
 @NgModule({
@@ -25,7 +28,10 @@ import { ExperienciaComponent } from './componentes/experiencia/experiencia.comp
     EducacionComponent,   
     NavbarComponent,
     ExperienciaComponent,
-  //  SkillsComponent,   
+    PieComponent,
+    SkillComponent,
+    LoginComponent,
+    PortfolioComponent,   
   ],
   imports: [
     BrowserModule,

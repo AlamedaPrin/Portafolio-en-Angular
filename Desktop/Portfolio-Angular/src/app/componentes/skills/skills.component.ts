@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Skill } from 'src/app/Entidades/skill';
+import { Skills } from 'src/app/Entidades/skill';
+import { AuthService } from 'src/app/servicios/auth.service';
 import { SkillService } from 'src/app/servicios/skills.service';
 
 @Component({
@@ -10,13 +11,13 @@ import { SkillService } from 'src/app/servicios/skills.service';
 })
 export class SkillComponent implements OnInit {
 
-  skillList!: Skill[];
+  skillList!: Skills[];
   form: FormGroup;
   accion = 'Agregar';
   id: number | undefined;
-  usuarioAutenticado:boolean = true; // por defecto debe estar en false
+  usuarioAutenticado:boolean = false; // por defecto debe estar en false
 
-  constructor(private miServicio:SkillService, private miFormBuilder:FormBuilder) { 
+  constructor(private miServicio:SkillService, private miFormBuilder:FormBuilder, private authService: AuthService) { 
     this.form = this.miFormBuilder.group({
       tipoDeSkill: ['', [Validators.required]],
       score: ['', [Validators.required]],
@@ -24,6 +25,8 @@ export class SkillComponent implements OnInit {
 }
 
   ngOnInit(): void {
+    this.usuarioAutenticado = this.authService.usuarioAutenticado();
+
     this.obtenerSkill();
   }
 
@@ -39,18 +42,23 @@ export class SkillComponent implements OnInit {
 
     const skill: any = {
     tipoDeSkill: this.form.get('tipoDeSkill')?.value,
+    score: this.form.get('score')?.value
     }
 
     if (this.id == undefined) {
+
       this.miServicio.saveSkill(skill).subscribe(data => {
         this.obtenerSkill();
         this.form.reset();
+        document.getElementById('cerrarModalSkill')?.click();
       }, error => {
         console.log(error);
       });
+
     } else {
 
       skill.id = this.id;
+
       this.miServicio.updateSkill(this.id, skill).subscribe(data => {
         this.form.reset();
         this.accion = 'Agregar';
@@ -70,6 +78,7 @@ export class SkillComponent implements OnInit {
 
     this.form.patchValue({
       tipoDeSkill: skill.tipoDeSkill,
+      score: skill.score
     });
   }
 

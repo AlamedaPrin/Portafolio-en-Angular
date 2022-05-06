@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Educacion } from 'src/app/Entidades/educacion';
+import { AuthService } from 'src/app/servicios/auth.service';
 import { EducacionService } from 'src/app/servicios/educacion.service';
 
 @Component({
@@ -14,10 +15,10 @@ export class EducacionComponent implements OnInit {
   form: FormGroup;
   accion = 'Agregar';
   id: number | undefined;
-  usuarioAutenticado: boolean = true; // por defecto debe estar en false
+  usuarioAutenticado: boolean = false; // por defecto debe estar en false
 
   
-  constructor(private miServicio:EducacionService, private miFormBuilder:FormBuilder)
+  constructor(private miServicio:EducacionService, private miFormBuilder:FormBuilder, private authService: AuthService)
   
   {
     this.form = this.miFormBuilder.group({
@@ -32,6 +33,8 @@ export class EducacionComponent implements OnInit {
   
 
   ngOnInit(): void {
+    this.usuarioAutenticado = this.authService.usuarioAutenticado();
+
     this.obtenerEducacion();
     
   }

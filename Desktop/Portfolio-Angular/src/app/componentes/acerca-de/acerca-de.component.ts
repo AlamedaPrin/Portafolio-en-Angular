@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder,  FormGroup, Validators, } from '@angular/forms';   
 import { AcercaDe } from 'src/app/Entidades/acerca';
 import { AcercaService } from 'src/app/servicios/acerca.service';
+import { AuthService } from 'src/app/servicios/auth.service';
 
 @Component({
   selector: 'app-acerca-de',
@@ -12,11 +13,12 @@ export class AcercaDeComponent implements OnInit {
   miPorfolioAcerca!: AcercaDe;
   form: FormGroup;
   formAgregarAcerca: FormGroup;
-  usuarioAutenticado: boolean = true; // Se muestran los botones. Por defecto debe estar en false
+  usuarioAutenticado: boolean = false; // Se muestran los botones. Por defecto debe estar en false
 
   constructor(
     private miServicio: AcercaService,
-    private miFormBuilder: FormBuilder
+    private miFormBuilder: FormBuilder,
+    private authService: AuthService
   ) {
     this.form = this.miFormBuilder.group({
       acercaDe: [''],      
@@ -31,6 +33,8 @@ export class AcercaDeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.usuarioAutenticado = this.authService.usuarioAutenticado();
+
     this.obtenerAcerca();
   }
 

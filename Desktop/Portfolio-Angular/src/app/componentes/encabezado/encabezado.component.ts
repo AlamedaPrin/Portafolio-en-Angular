@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Persona } from 'src/app/Entidades/persona';
+import { AuthService } from 'src/app/servicios/auth.service';
 import { PorfolioService } from 'src/app/servicios/porfolio.service';
 
 @Component({
@@ -11,11 +12,12 @@ import { PorfolioService } from 'src/app/servicios/porfolio.service';
 export class EncabezadoComponent implements OnInit {
   miPorfolioEncabezado!: Persona;
   form: FormGroup;
-  usuarioAutenticado: boolean = true; // por defecto debe estar en false
+  usuarioAutenticado: boolean = false; // por defecto debe estar en false
 
   constructor(
     private datosPorfolio: PorfolioService,
-    private miFormBuilder: FormBuilder
+    private miFormBuilder: FormBuilder,
+    private authService: AuthService
   ) {
     this.form = this.miFormBuilder.group({
       fullName: ['', [Validators.required, Validators.minLength(5)]],
@@ -30,6 +32,8 @@ export class EncabezadoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.usuarioAutenticado = this.authService.usuarioAutenticado();
+
     this.datosPorfolio.obtenerDatos().subscribe((data) => {
       console.log(data);
       this.miPorfolioEncabezado = data;

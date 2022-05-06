@@ -326,6 +326,13 @@ h3 {
   margin-top: 10px;
   color: #4bcffa;
 }
+/* skills */
+
+#skillButtons {
+
+  margin-top: 0.7cm;
+
+}
 
 /* proyectos */
 
@@ -352,6 +359,20 @@ h3 {
 .pie {
   border: solid #fff 2px;
 }
+
+/* Pie de página */
+
+.abajo {
+  padding: 20px;  
+  display: flex;
+  justify-content:center;
+}
+
+.abajoDos {
+  display: flex;
+  justify-content:center;
+}
+
 
 /* Modales */
 
