@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Skills } from 'src/app/Entidades/skill';
+import { AuthService } from 'src/app/servicios/auth.service';
 import { SkillService } from 'src/app/servicios/skills.service';
 
 @Component({
@@ -14,9 +15,9 @@ export class SkillComponent implements OnInit {
   form: FormGroup;
   accion = 'Agregar';
   id: number | undefined;
-  usuarioAutenticado:boolean = true; // por defecto debe estar en false
+  usuarioAutenticado:boolean = false; // por defecto debe estar en false
 
-  constructor(private miServicio:SkillService, private miFormBuilder:FormBuilder) { 
+  constructor(private miServicio:SkillService, private miFormBuilder:FormBuilder, private authService: AuthService) { 
     this.form = this.miFormBuilder.group({
       tipoDeSkill: ['', [Validators.required]],
       score: ['', [Validators.required]],
@@ -24,6 +25,8 @@ export class SkillComponent implements OnInit {
 }
 
   ngOnInit(): void {
+    this.usuarioAutenticado = this.authService.usuarioAutenticado();
+
     this.obtenerSkill();
   }
 

@@ -14,6 +14,8 @@ import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { ExperienciaComponent } from './componentes/experiencia/experiencia.component';
 import { PieComponent } from './componentes/pie/pie.component';
 import { SkillComponent } from './componentes/skills/skills.component';
+import { LoginComponent } from './componentes/auth/login/login.component';
+import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { SkillComponent } from './componentes/skills/skills.component';
     NavbarComponent,
     ExperienciaComponent,
     PieComponent,
-    SkillComponent,   
+    SkillComponent,
+    LoginComponent,
+    PortfolioComponent,   
   ],
   imports: [
     BrowserModule,

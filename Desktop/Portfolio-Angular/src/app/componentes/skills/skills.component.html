@@ -3,7 +3,9 @@
     <div class="habilidad">
       <i class="fas fa-smile-wink fa-2x" id="guinio"></i>
         <h3 class="de">Skills</h3>
-        <button *ngIf="usuarioAutenticado" data-bs-toggle="modal" id="plusEdu" data-bs-target="#skillModal" ><i class="" title="add">Agregar</i></button>
+        <div class="col">
+        <i type="button" *ngIf="usuarioAutenticado" data-bs-toggle="modal" class="fa fa-plus" id="plusEdu" data-bs-target="#skillModal" title="add">Agregar</i>
+      </div>
       </div>   
          
    
@@ -12,25 +14,27 @@
       <li *ngFor="let skill of skillList">
         <div class="group" id="skills">
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-11">
               <div class="skills info-card">
-                <div class="col-md-6">
-                  <i *ngIf="usuarioAutenticado" type="button" data-bs-toggle="modal" data-bs-target="#skillModal"
-                    class="fas fa-pen" id="aver" (click)="editarSkill(skill)"></i>
-                  <i *ngIf="usuarioAutenticado" type="button" class="fas fa-trash-alt" id="aber"
-                    (click)="eliminarSkill(skill.id)"></i>
-                </div>
-                <h3>{{skill.tipoDeSkill}}</h3>
+               
+                <h6>{{skill.tipoDeSkill}}</h6>
     
     
                 <div class="progress">
-                  <div class="progress-bar" role="progressbar" [ngStyle]="{'width': skill.score + '%'}" 
+                  <div class="progress-bar progress-bar-striped bg-info" role="progressbar" [ngStyle]="{'width': skill.score + '%'}" 
                   aria-valuemin="0" aria-valuemax="100">
                     
                   </div>
                 </div>
               </div>
             </div>
+            <div class="col" id="skillButtons">
+              <i *ngIf="usuarioAutenticado" type="button" data-bs-toggle="modal" data-bs-target="#skillModal"
+                class="fas fa-pen" id="aver" (click)="editarSkill(skill)"></i>
+              <i *ngIf="usuarioAutenticado" type="button" class="fas fa-trash-alt" id="aber"
+                (click)="eliminarSkill(skill.id)"></i>
+            </div>
+
           </div>
         </div>
     

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Proyecto } from 'src/app/Entidades/proyecto';
+import { AuthService } from 'src/app/servicios/auth.service';
 import { ProyectosService } from 'src/app/servicios/proyectos.service'; // Importo este servicio a mano si había otro asignado
 
 @Component({
@@ -14,10 +15,10 @@ export class FooterComponent implements OnInit {
   form: FormGroup;
   accion = 'Agregar';
   id: number | undefined;
-  usuarioAutenticado: boolean = true; // por defecto debe estar en false
+  usuarioAutenticado: boolean = false; // por defecto debe estar en false
 
   
-  constructor(private miServicio: ProyectosService,private miFormBuilder: FormBuilder)      
+  constructor(private miServicio: ProyectosService,private miFormBuilder: FormBuilder, private authService: AuthService)      
    {
     this.form = this.miFormBuilder.group({
       tipoDeProyecto: ['', [Validators.required]], 
@@ -26,6 +27,8 @@ export class FooterComponent implements OnInit {
  
 
   ngOnInit(): void {
+    this.usuarioAutenticado = this.authService.usuarioAutenticado();
+
     this.obtenerProyectos();    
   }
 

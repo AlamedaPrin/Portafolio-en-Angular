@@ -72,6 +72,8 @@
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <i class="btn btn-info me-md-4" type="button" id="login" data-bs-toggle="modal"
                     data-bs-target="#modalLogin">Login</i>
+         <button *ngIf="!usuarioAutenticado" class="btn btn-outline-success my-2 my-sm-0" routerLink="/login">Login</button>
+         <button *ngIf="usuarioAutenticado" class="btn btn-outline-success my-2 my-sm-0" routerLink="/logout" (click)="logout()">Logout</button>
             </div>
 
 

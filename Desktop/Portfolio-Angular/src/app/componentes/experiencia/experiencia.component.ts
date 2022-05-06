@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Experiencia } from 'src/app/Entidades/experiencia';
+import { AuthService } from 'src/app/servicios/auth.service';
 import { ExperienciaService } from 'src/app/servicios/experiencia.service';
 
 @Component({
@@ -15,15 +16,18 @@ export class ExperienciaComponent implements OnInit {
   form: FormGroup;
   accion = 'Agregar';
   id: number | undefined;
-  usuarioAutenticado:boolean=true;
+  usuarioAutenticado:boolean=false;
 
-  constructor(private miServicio:ExperienciaService, private miFormBuilder:FormBuilder) { 
+  constructor(private miServicio:ExperienciaService, private miFormBuilder:FormBuilder, private authService: AuthService) { 
     this.form = this.miFormBuilder.group({
       tipoDeExperiencia: ['', [Validators.required]],
     });
   }
 
   ngOnInit(): void {
+    this.usuarioAutenticado = this.authService.usuarioAutenticado();
+
+
     this.obtenerExperiencia();
   }
 
