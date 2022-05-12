@@ -11,12 +11,9 @@
 .navB {
   display: flex;
   justify-content: center;
+  margin-left: 6cm;
 }
 
-#navB {
-  display: flex;
-  justify-content: center;
-}
 
 .toolbar {
   position: absolute;
@@ -50,6 +47,7 @@
 
 #login {
   color: white;
+  margin-right: 0.6cm;
 }
 
 /* header */

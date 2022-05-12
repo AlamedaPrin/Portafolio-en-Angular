@@ -67,13 +67,7 @@
       "image": "",
       "id": 19
     },
-    {
-      "fullName": "Franco Simon Menna",
-      "position": "Full Stack Developer Jr",
-      "ubication": "Buenos Aires (Brasil)",
-      "image": "",
-      "id": 20
-    },
+    
     {
       "fullName": "Franco Menna",
       "position": "Full Stack Developer Jr",
@@ -86,19 +80,9 @@
       "ubication": "Buenos Aires (Argentina)",
       "image": "",
       "id": 22
-    },
-    {
-      "AcercaDe": "Franco Simon Menna Alejando dolnina",
-      "id": 23
-    },
-    {
-      "AcercaDe": "Que esta pasando acá a ver che",
-      "id": 24
-    },
-    {
-      "AcercaDe": "probandoooooooooooooooooo",
-      "id": 25
-    },
+    },   
+    
+   
     {
       "AcercaDe": "",
       "id": 26
@@ -131,15 +115,8 @@
       "experiencia1": null,
       "experiencia2": null,
       "id": 32
-    },
-    {
-      "AcercaDe": "Franco Simon Menna Alejando dolnina",
-      "id": 33
-    },
-    {
-      "AcercaDe": "Franco Simon Menna Alejando dolnina",
-      "id": 34
-    },
+    },    
+    
     {
       "experiencia1": "",
       "experiencia2": "",
@@ -201,10 +178,7 @@
       "image": "",
       "id": 47
     },
-    {
-      "Proyectos": "No continuar mi formación de desarrollador web. Descubrir y aprender nuevos stacks tecnológicos para poder así abarcar distintas maneras de creación y mantenimiento web",
-      "id": 48
-    },
+    
     {
       "AcercaDe": "- Estudiante argentino de desarrollo web. Egresado de Argentina Programa.",
       "id": 49
