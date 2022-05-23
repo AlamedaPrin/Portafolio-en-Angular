@@ -8,7 +8,7 @@ import { Proyecto } from '../Entidades/proyecto';
 })
 export class ProyectosService {
 
-  url:string = "http://localhost:8080/proyecto";
+  url:string = "https://back-porfo.herokuapp.com/proyecto";
   
   constructor(private http: HttpClient) {}  
 

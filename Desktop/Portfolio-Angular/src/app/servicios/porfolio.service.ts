@@ -8,7 +8,7 @@ import { Persona } from '../Entidades/persona';
 })
 export class PorfolioService {
 
-  url:string="http://localhost:8080/persona";
+  url:string="https://back-porfo.herokuapp.com/persona";
 
   constructor(private http: HttpClient) {}
 

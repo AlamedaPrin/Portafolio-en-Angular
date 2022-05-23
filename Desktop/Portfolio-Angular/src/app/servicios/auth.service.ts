@@ -8,7 +8,7 @@ import { LoginDto } from '../Entidades/LoginDto';
 })
 export class AuthService {
 
-  url:string="http://localhost:8080/login"
+  url:string="https://back-porfo.herokuapp.com/login"
 
   constructor(private http: HttpClient) { }
 

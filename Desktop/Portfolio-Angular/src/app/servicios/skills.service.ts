@@ -8,7 +8,7 @@ import { Skills } from 'src/app/Entidades/skill';
 })
 export class SkillService {
 
-  url:string="http://localhost:8080/skills";
+  url:string="https://back-porfo.herokuapp.com/skills";
 
   constructor(private http: HttpClient) {}
 
