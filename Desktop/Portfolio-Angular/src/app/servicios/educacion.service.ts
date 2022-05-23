@@ -9,7 +9,7 @@ import { Educacion } from '../Entidades/educacion';
 export class EducacionService {
   constructor(private http: HttpClient) {}
 
-  url:string = 'http://localhost:8080/educacion';
+  url:string = "https://back-porfo.herokuapp.com/educacion";
 
   getListEducacion(): Observable<Educacion[]> {  
     return this.http.get<Educacion[]>(this.url);

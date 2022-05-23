@@ -8,7 +8,7 @@ import { Experiencia } from '../Entidades/experiencia';
 })
 export class ExperienciaService {
 
-  url:string="http://localhost:8080/experiencia"
+  url:string="https://back-porfo.herokuapp.com/experiencia"
 
 
   constructor(private http: HttpClient) {}

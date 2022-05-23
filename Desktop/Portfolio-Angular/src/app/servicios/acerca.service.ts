@@ -8,7 +8,7 @@ import { AcercaDe } from '../Entidades/acerca';
 })
 export class AcercaService {
 
-  url:string="http://localhost:8080/acerca";
+  url:string="https://back-porfo.herokuapp.com/acerca";
 
   constructor(private http: HttpClient) {}
 
